@@ -1,9 +1,9 @@
 {
   "title": "True Autographs",
-  "titleTemplate": "%s - ACME Storefront",
-  "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+  "titleTemplate": "%s - True Autographs",
+  "description": "Your Home For Affordable AUTHENTIC Autographs!",
   "openGraph": {
-    "title": "ACME Storefront | Powered by Next.js Commerce",
+    "title": "True Autographs | Your Home For Affordable AUTHENTIC Autographs!",
     "description": "Next.js Commerce - https://www.nextjs.org/commerce",
     "type": "website",
     "locale": "en_IE",

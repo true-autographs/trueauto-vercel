@@ -54,6 +54,18 @@ export default function Home({
           />
         ))}
       </Grid>
+      <Grid>
+        {products.slice(0, 3).map((product, i) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            imgProps={{
+              width: i === 0 ? 1080 : 540,
+              height: i === 0 ? 1080 : 540,
+            }}
+          />
+        ))}
+      </Grid>
       <Marquee variant="secondary">
         {products.slice(0, 3).map((product, i) => (
           <ProductCard
