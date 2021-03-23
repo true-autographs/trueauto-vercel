@@ -18,5 +18,6 @@
 }
 
 .secondary {
-  @apply bg-black;
+  /* @apply bg-black; */
+  background-color: white;
 }

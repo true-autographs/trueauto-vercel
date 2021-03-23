@@ -16,31 +16,41 @@
     & .productTitle > span,
     & .productPrice,
     & .wishlistButton {
-      @apply bg-secondary text-secondary;
+      /* @apply bg-secondary text-secondary; */
+      background-color: var(--brand-orange-100);
+      color: var(--text-secondary);
     }
 
     &:nth-child(6n + 1) .productTitle > span,
     &:nth-child(6n + 1) .productPrice,
     &:nth-child(6n + 1) .wishlistButton {
-      @apply bg-violet text-white;
+      /* @apply bg-violet text-white; */
+      background-color: var(--brand-orange-100);
+      color: var(--text-secondary);
     }
 
     &:nth-child(6n + 5) .productTitle > span,
     &:nth-child(6n + 5) .productPrice,
     &:nth-child(6n + 5) .wishlistButton {
-      @apply bg-blue text-white;
+      /* @apply bg-blue text-white; */
+      background-color: var(--brand-orange-100);
+      color: var(--text-secondary);
     }
 
     &:nth-child(6n + 3) .productTitle > span,
     &:nth-child(6n + 3) .productPrice,
     &:nth-child(6n + 3) .wishlistButton {
-      @apply bg-pink text-white;
+      /* @apply bg-pink text-white; */
+      background-color: var(--brand-orange-100);
+      color: var(--text-secondary);
     }
 
     &:nth-child(6n + 6) .productTitle > span,
     &:nth-child(6n + 6) .productPrice,
     &:nth-child(6n + 6) .wishlistButton {
-      @apply bg-cyan text-white;
+      /* @apply bg-cyan text-white; */
+      background-color: var(--brand-orange-100);
+      color: var(--text-secondary);
     }
   }
 

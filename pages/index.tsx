@@ -8,6 +8,7 @@ import { getConfig } from '@framework/api'
 import getAllProducts from '@framework/product/get-all-products'
 import getSiteInfo from '@framework/common/get-site-info'
 import getAllPages from '@framework/common/get-all-pages'
+import { relative } from 'path'
 
 export async function getStaticProps({
   preview,
@@ -42,30 +43,57 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <Grid>
-        {products.slice(0, 3).map((product, i) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            imgProps={{
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
+      <section className={'w-screen flex md:flex-wrap'}>
+        <section
+          style={{
+            width: '50%',
+            height: '100vh',
+            backgroundColor: '#000000',
+            position: 'relative',
+          }}
+        >
+          <img
+            src={'/IRVING_FRYAR_PHOTO_1024x1024.jpg'}
+            alt="all products"
+            style={{
+              position: 'absolute',
+              top: '0',
+              left: '0',
+              width: '100%',
+              minWidth: '100%',
+              height: '100%',
+              minHeight: '100%',
+              objectFit: 'cover',
+              opacity: '60%',
             }}
           />
-        ))}
-      </Grid>
-      <Grid>
-        {products.slice(0, 3).map((product, i) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            imgProps={{
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
+        </section>
+        <section
+          style={{
+            width: '50%',
+            height: '100vh',
+            backgroundColor: '#000000',
+            position: 'relative',
+          }}
+        >
+          <img
+            src={'/IRVING_FRYAR_PHOTO_1024x1024.jpg'}
+            alt="all products"
+            style={{
+              position: 'absolute',
+              top: '0',
+              left: '0',
+              width: '100%',
+              minWidth: '100%',
+              height: '100%',
+              minHeight: '100%',
+              objectFit: 'cover',
+              opacity: '60%',
             }}
           />
-        ))}
-      </Grid>
+        </section>
+      </section>
+      {/* <Grid></Grid> */}
       <Marquee variant="secondary">
         {products.slice(0, 3).map((product, i) => (
           <ProductCard
@@ -79,15 +107,23 @@ export default function Home({
           />
         ))}
       </Marquee>
+      <Grid>
+        {products.slice(0, 3).map((product, i) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            imgProps={{
+              width: i === 0 ? 1080 : 540,
+              height: i === 0 ? 1080 : 540,
+            }}
+          />
+        ))}
+      </Grid>
+
       <Hero
-        headline="Release Details: The Yeezy BOOST 350 V2 ‘Natural'"
+        headline="A BUNCH of new upcoming signings!"
         description="
-        The Yeezy BOOST 350 V2 lineup continues to grow. We recently had the
-        ‘Carbon’ iteration, and now release details have been locked in for
-        this ‘Natural’ joint. Revealed by Yeezy Mafia earlier this year, the
-        shoe was originally called ‘Abez’, which translated to ‘Tin’ in
-        Hebrew. It’s now undergone a name change, and will be referred to as
-        ‘Natural’."
+        John Taylor will be in the house here in Stockton to complete a private signing with over 75 mail in orders! Looking forward to sharing these moments with you after the weekend!"
       />
       <Grid layout="B">
         {products.slice(0, 3).map((product, i) => (
