@@ -43,11 +43,15 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <section className={'w-screen flex md:flex-wrap'}>
+      {/* TODO: Text button and linking */}
+      <section
+        className={'w-screen flex md:flex-wrap'}
+        style={{ height: '80vh' }}
+      >
         <section
           style={{
             width: '50%',
-            height: '100vh',
+            height: '100%',
             backgroundColor: '#000000',
             position: 'relative',
           }}
@@ -71,7 +75,7 @@ export default function Home({
         <section
           style={{
             width: '50%',
-            height: '100vh',
+            height: '100%',
             backgroundColor: '#000000',
             position: 'relative',
           }}
@@ -94,6 +98,7 @@ export default function Home({
         </section>
       </section>
       {/* <Grid></Grid> */}
+      <h1>--- League Categories ---</h1>
       <Marquee variant="secondary">
         {products.slice(0, 3).map((product, i) => (
           <ProductCard
@@ -107,6 +112,22 @@ export default function Home({
           />
         ))}
       </Marquee>
+      <h1>--- Featured Products ---</h1>
+      <Marquee variant="secondary">
+        {products.slice(0, 3).map((product, i) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            variant="slim"
+            imgProps={{
+              width: 320,
+              height: 320,
+            }}
+          />
+        ))}
+      </Marquee>
+
+      {/* TODO: Make card grid for signings -- cards not poster spread */}
       <Grid>
         {products.slice(0, 3).map((product, i) => (
           <ProductCard
@@ -158,5 +179,8 @@ export default function Home({
     </>
   )
 }
+
+/* TODO: Paginate search results. */
+/* TODO: Offset color on footer. */
 
 Home.Layout = Layout
