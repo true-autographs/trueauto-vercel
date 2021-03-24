@@ -170,6 +170,7 @@ export interface Product extends Entity {
   price: ProductPrice
   options: ProductOption[]
   sku?: string
+  type?: string
 }
 
 interface ProductOption extends Entity {

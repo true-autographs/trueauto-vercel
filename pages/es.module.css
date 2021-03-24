@@ -1,0 +1,106 @@
+.eventsWrapper {
+  width: 100%;
+  padding: 4rem 0 4rem 0;
+
+  background-color: rgba(232, 119, 34, 0.2);
+}
+
+.cardsWrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: auto;
+  min-height: 200px;
+
+  padding: 1.5rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  column-gap: 1.5rem;
+  row-gap: 1.5rem;
+}
+/*  */
+
+.eventsHeader {
+  border-top: black solid 4px;
+  grid-column: 1/-1;
+}
+
+.eventsHeader h1 {
+  font-size: 2rem;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-bottom: 2rem;
+}
+
+.eventsFooter {
+  padding-top: 2rem;
+  grid-column: 1/-1;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/*  */
+.eventCard {
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.eventCard:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+    0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
+    0 16px 16px rgba(0, 0, 0, 0.12);
+}
+
+.info {
+  padding: 1.5rem;
+}
+
+.date {
+}
+
+.category {
+  font-size: 1rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
+
+.info h1 {
+  font-size: 1rem;
+  font-weight: 800;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.description {
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.descirption p {
+}
+
+.imageWrapper {
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.imageWrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}

@@ -246,7 +246,7 @@ export default function Search({
                         }
                       )}
                     >
-                      <Link
+                      {/* <Link
                         href={{
                           pathname: getDesignerPath('', category),
                           query,
@@ -260,9 +260,9 @@ export default function Search({
                         >
                           All Designers
                         </a>
-                      </Link>
+                      </Link> */}
                     </li>
-                    {brands.flatMap(({ node }) => (
+                    {/*  {brands.flatMap(({ node }) => (
                       <li
                         key={node.path}
                         className={cn(
@@ -289,7 +289,7 @@ export default function Search({
                           </a>
                         </Link>
                       </li>
-                    ))}
+                    ))} */}
                   </ul>
                 </div>
               </div>
@@ -346,16 +346,18 @@ export default function Search({
           {data ? (
             <Grid layout="normal">
               {data.products.map((product: Product) => (
-                <ProductCard
-                  variant="simple"
-                  key={product.path}
-                  className="animated fadeIn"
-                  product={product}
-                  imgProps={{
-                    width: 480,
-                    height: 480,
-                  }}
-                />
+                <>
+                  <ProductCard
+                    variant="simple"
+                    key={product.path}
+                    className="animated fadeIn"
+                    product={product}
+                    imgProps={{
+                      width: 480,
+                      height: 480,
+                    }}
+                  />
+                </>
               ))}
             </Grid>
           ) : (

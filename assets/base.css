@@ -220,6 +220,21 @@
   --accents-8: #343a40;
   --accents-9: #212529;
   --font-sans: 'HK Grotesk', 'Helvetica Neue', 'Helvetica', sans-serif;
+
+  --brand-orange-100: rgba(232, 119, 034, 1);
+  --brand-orange-80: rgba(232, 119, 034, 0.8);
+  --brand-orange-60: rgba(232, 119, 034, 0.6);
+  --brand-orange-40: rgba(232, 119, 034, 0.4);
+
+  --brand-cyan-100: rgba(000, 181, 226, 1);
+  --brand-cyan-80: rgba(000, 181, 226, 0.8);
+  --brand-cyan-60: rgba(000, 181, 226, 0.6);
+  --brand-cyan-40: rgba(000, 181, 226, 0.4);
+
+  --brand-black-100: rgba(000, 0, 0, 1);
+  --brand-black-80: rgba(000, 0, 0, 0.8);
+  --brand-black-60: rgba(000, 0, 0, 0.6);
+  --brand-black-40: rgba(000, 0, 0, 0.4);
 }
 
 [data-theme='dark'] {

@@ -8,7 +8,10 @@ import s from './Navbar.module.css'
 const Navbar: FC = () => (
   <NavbarRoot>
     <Container>
-      <div className="relative flex flex-row justify-between py-4 align-center md:py-6">
+      <div
+        className="relative flex flex-row justify-between py-4 align-center md:py-6"
+        style={{ paddingTop: '.75rem', paddingBottom: '.75rem' }}
+      >
         <div className="flex items-center flex-1">
           <Link href="/">
             <a className={s.logo} aria-label="Logo">
@@ -17,22 +20,22 @@ const Navbar: FC = () => (
           </Link>
           <nav className="hidden ml-6 space-x-4 lg:block">
             <Link href="/search">
-              <a className={s.link}>All</a>
+              <a className={''}>products</a>
             </Link>
-            <Link href="/search?q=clothes">
-              <a className={s.link}>Clothes</a>
+            <Link href="/events">
+              <a className={''}>Signing events</a>
             </Link>
-            <Link href="/search?q=accessories">
-              <a className={s.link}>Accessories</a>
+            <Link href="/news">
+              <a className={''}>news</a>
             </Link>
-            <Link href="/search?q=shoes">
-              <a className={s.link}>Shoes</a>
+            <Link href="/search">
+              <a className={''}>Search</a>
             </Link>
           </nav>
         </div>
 
         <div className="justify-center flex-1 hidden lg:flex">
-          <Searchbar />
+          {/* <Searchbar /> */}
         </div>
 
         <div className="flex justify-end flex-1 space-x-8">
