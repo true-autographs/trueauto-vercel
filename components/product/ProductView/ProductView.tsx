@@ -73,12 +73,12 @@ const ProductView: FC<Props> = ({ product }) => {
       <div className={cn(s.root, 'fit')}>
         <div className={cn(s.productDisplay, 'fit')}>
           <div className={s.nameBox}>
-            <h1 className={s.name}>{product.name}</h1>
+            {/* <h1 className={s.name}>{product.name}</h1>
             <div className={s.price}>
-              {price}
+              {product.price.value}
               {` `}
               {product.price?.currencyCode}
-            </div>
+            </div> */}
           </div>
 
           <div className={s.sliderContainer}>
@@ -103,9 +103,24 @@ const ProductView: FC<Props> = ({ product }) => {
           <section>
             {product.options?.map((opt) => (
               <div className="pb-4" key={opt.displayName}>
-                <h2 className="uppercase font-medium">{opt.displayName}</h2>
+                <h2
+                  className="uppercase font-medium text-4xl"
+                  style={{
+                    fontWeight: '600',
+                    lineHeight: '1.4',
+                    letterSpacing: '0.03em',
+                  }}
+                >
+                  {product.name}
+                </h2>
+                <h2
+                  className="uppercase font-medium"
+                  style={{ fontSize: '2rem', paddingTop: '2rem' }}
+                >
+                  ${product.price.value}
+                </h2>
                 <div className="flex flex-row py-4">
-                  {opt.values.map((v, i: number) => {
+                  {/* {opt.values.map((v, i: number) => {
                     const active = (choices as any)[
                       opt.displayName.toLowerCase()
                     ]
@@ -127,10 +142,18 @@ const ProductView: FC<Props> = ({ product }) => {
                         }}
                       />
                     )
-                  })}
+                  })} */}
                 </div>
               </div>
             ))}
+
+            <hr
+              style={{
+                borderTop: '4px solid #E87722',
+                paddingBottom: '1rem',
+                width: '4rem',
+              }}
+            />
 
             <div className="pb-14 break-words w-full max-w-xl">
               <Text html={product.description} />

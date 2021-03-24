@@ -1,3 +1,5 @@
+import { Layout } from '@components/common'
+
 import { client } from '../../prismic-configuration'
 import { RichText } from 'prismic-reactjs'
 import Prismic from 'prismic-javascript'
@@ -8,12 +10,18 @@ export default function Post({ data }) {
   //console.log(data.body[0].primary)
   return (
     <div className="pb20">
-      <div className="text-center pt-40 pb-56 bg-violet">
+      <div
+        className="text-center pt-40 pb-56"
+        style={{ backgroundColor: '#E87722' }}
+      >
         <Container>
           <h1 className="text-4xl tracking-tight leading-10 font-extrabold text-white sm:text-5xl sm:leading-none md:text-6xl">
             {RichText.asText(data.entry_title)}
           </h1>
-          <h2 className="mt-3 max-w-md mx-auto text-gray-100 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+          <h2
+            className="mt-3 max-w-md mx-auto text-gray-100 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl"
+            style={{ maxWidth: '70ch' }}
+          >
             {RichText.asText(data.sub_title)}
           </h2>
           <p className="mt-3 max-w-md mx-auto text-gray-100 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
@@ -30,19 +38,29 @@ export default function Post({ data }) {
           </article> */}
         </Container>
       </div>
-      <Container>
+      <section
+        style={{
+          width: '100%',
+          maxWidth: '70ch',
+          margin: '-10rem auto 0 auto',
+        }}
+      >
         {/* <div className="-mt-96 mx-auto"> */}
         <div className="object-center">
           <img
             class="object-center"
             src={data.featured_image.url}
             alt="Jacket"
+            style={{
+              boxShadow:
+                '0 1px 2px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.07), 0 4px 8px rgba(0,0,0,0.07), 0 8px 16px rgba(0,0,0,0.07),0 16px 32px rgba(0,0,0,0.07), 0 32px 64px rgba(0,0,0,0.07)',
+            }}
           />
         </div>
         <div className="text-lg leading-7 font-medium py-6 text-justify max-w-6xl mx-auto">
           {RichText.asText(data.article_body)}
         </div>
-      </Container>
+      </section>
     </div>
   )
 }
@@ -71,3 +89,5 @@ export async function getStaticPaths() {
     fallback: false,
   }
 }
+
+Post.Layout = Layout

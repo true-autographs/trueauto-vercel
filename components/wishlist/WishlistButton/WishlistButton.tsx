@@ -68,6 +68,7 @@ const WishlistButton: FC<Props> = ({
       aria-label="Add to wishlist"
       className={cn({ 'opacity-50': loading }, className)}
       onClick={handleWishlistChange}
+      style={{ backgroundColor: '#E87722' }}
       {...props}
     >
       <Heart fill={itemInWishlist ? 'var(--pink)' : 'none'} />

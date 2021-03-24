@@ -1,0 +1,85 @@
+.container {
+  width: 100vw;
+  height: auto;
+  background-color: var(--brand-color-orange-100);
+
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100vh 100vh;
+  column-gap: 1.5rem;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+
+  @media screen and (min-width: 800px) {
+    /* padding: 0 4rem 0 4rem; */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    height: 75vh;
+    min-height: 30vw;
+    max-height: 150vw;
+  }
+}
+
+.linkWrapper {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+}
+
+.section {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+  overflow: hidden;
+
+  background-color: #e87722;
+}
+
+.backgroundImage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* top: 50%;
+  left: 50%; */
+  object-fit: cover;
+  filter: grayscale(100%) saturate(40);
+  z-index: 0;
+  /* transform: translate(-50%, -50%); */
+  opacity: 90%;
+  transition: all 0.3s ease-out;
+}
+
+.backgroundImage:hover {
+  opacity: 60%;
+  transform: scale(1.1);
+}
+
+.textBox {
+  width: 60%;
+  /*  background-color: white; */
+  position: absolute;
+  bottom: -5px;
+  left: 5px;
+}
+
+.textBox p {
+  position: relative;
+  font-weight: 800;
+  font-size: 2rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  z-index: 2;
+}
