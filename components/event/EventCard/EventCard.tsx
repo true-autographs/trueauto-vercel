@@ -15,7 +15,7 @@ interface Props {
 
 const placeholderImg = '/product-img-placeholder.svg'
 
-const ProductCard: FC<Props> = ({
+const EventCard: FC<Props> = ({
   className,
   product,
   variant,
@@ -85,4 +85,4 @@ const ProductCard: FC<Props> = ({
   </Link>
 )
 
-export default ProductCard
+export default EventCard

@@ -106,7 +106,7 @@ const ProductView: FC<Props> = ({ product }) => {
                 <h2
                   className="uppercase font-medium text-4xl"
                   style={{
-                    fontWeight: '600',
+                    fontWeight: 600,
                     lineHeight: '1.4',
                     letterSpacing: '0.03em',
                   }}

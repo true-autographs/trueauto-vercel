@@ -133,12 +133,12 @@ export default function Home({
         </section>
       </section> */}
       <HomeHero />
-      {/* <Grid></Grid> */}
 
       <Marquee variant="primary">
         {marqueeItems.map((item) => (
           <SportLeagueCard
             key={item.name}
+            name={item.name}
             imageUrl={item.imageUrl}
             pageLink={item.link}
           />

@@ -6,15 +6,9 @@ import s from './EventGrid.module.css'
 import Image, { ImageProps } from 'next/image'
 import WishlistButton from '@components/wishlist/WishlistButton'
 
+const EventGrid = () => <></>
 
-const EventGrid = () =>(
-  
-)
-
-
-
-
-
+export default EventGrid
 
 /* interface Props {
   className?: string

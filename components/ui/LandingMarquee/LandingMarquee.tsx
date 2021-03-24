@@ -8,12 +8,8 @@ interface Props {
   children?: ReactNode[] | Component[] | any[]
 }
 
-const LandingMarquee = ({ items }) => {
-  return (
-    <Marquee>
-      {items}
-    </Marquee>
-  )
+const LandingMarquee = (items: any[]) => {
+  return <Marquee>{items}</Marquee>
 }
 
 const Marquee: FC<Props> = ({ children }) => {
