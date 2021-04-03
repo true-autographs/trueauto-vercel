@@ -1,0 +1,119 @@
+// Ratios to use
+$ratio-minor-second: 1.067;
+$ratio-major-second: 1.125;
+$ratio-minor-third: 1.2;
+$ratio-major-third: 1.25;
+$ratio-perfect-fourth: 1.333;
+
+// Build modular sizes for mobile
+$typo-ratio-mobile: $ratio-major-second;
+$fs-mobile-base: 1rem;
+$fs-mobile-sm: $fs-mobile-base / $typo-ratio-mobile;
+$fs-mobile-lg: $fs-mobile-base * $typo-ratio-mobile;
+$fs-mobile-xl: $fs-mobile-lg * $typo-ratio-mobile;
+$fs-mobile-xxl: $fs-mobile-xl * $typo-ratio-mobile;
+$fs-mobile-xxxl: $fs-mobile-xxl * $typo-ratio-mobile;
+$fs-mobile-jumbo: $fs-mobile-xxxl * $typo-ratio-mobile;
+
+// Build modular sizes for tablet-up
+$typo-ratio-desktop: $ratio-major-third;
+$fs-desktop-base: 1rem;
+$fs-desktop-sm: $fs-desktop-base / $typo-ratio-desktop;
+$fs-desktop-lg: $fs-desktop-base * $typo-ratio-desktop;
+$fs-desktop-xl: $fs-desktop-lg * $typo-ratio-desktop;
+$fs-desktop-xxl: $fs-desktop-xl * $typo-ratio-desktop;
+$fs-desktop-xxxl: $fs-desktop-xxl * $typo-ratio-desktop;
+$fs-desktop-jumbo: $fs-desktop-xxxl * $typo-ratio-desktop;
+
+// Allow user to set base font size
+:root {
+  font-size: 100%;
+}
+
+// Typography sizes
+@mixin typo-size-sm {
+  font-size: $fs-mobile-sm;
+  line-height: 1.4;
+
+  @include query-tablet {
+    font-size: $fs-desktop-sm;
+  }
+}
+
+@mixin typo-size-base {
+  font-size: $fs-mobile-base;
+  line-height: 1.4;
+
+  @include query-tablet {
+    font-size: $fs-desktop-base;
+  }
+}
+
+@mixin typo-size-lg {
+  font-size: $fs-mobile-lg;
+  line-height: 1.4;
+
+  @include query-tablet {
+    font-size: $fs-desktop-lg;
+  }
+}
+
+@mixin typo-size-xl {
+  font-size: $fs-mobile-xl;
+  line-height: 1.4;
+
+  @include query-tablet {
+    font-size: $fs-desktop-xl;
+  }
+}
+
+@mixin typo-size-xxl {
+  font-size: $fs-mobile-xxl;
+  line-height: 1.4;
+
+  @include query-tablet {
+    font-size: $fs-desktop-xxl;
+  }
+}
+
+@mixin typo-size-xxxl {
+  font-size: $fs-mobile-xxxl;
+  line-height: 1.4;
+
+  @include query-tablet {
+    font-size: $fs-desktop-xxxl;
+  }
+}
+
+@mixin typo-size-jumbo {
+  font-size: $fs-mobile-jumbo;
+  line-height: 1.4;
+
+  @include query-tablet {
+    font-size: $fs-desktop-jumbo;
+  }
+}
+
+// Helper Variables
+$all-caps-text-spacing: 0.5em;
+
+// Typography
+@mixin typo-text {
+  @extend font-sans-400;
+  @extend type-size-base;
+  color: $brandcolor-black-80;
+}
+
+@mixin typo-subtext {
+  @extend font-sans-400;
+  @extend type-size-sm;
+  color: $brandcolor-black-80;
+}
+
+@mixin typo-button {
+  @extend font-sans-800;
+  @extend type-size-base;
+  color: $brandcolor-black-100;
+  text-transform: uppercase;
+  letter-spacing: $all-caps-text-spacing;
+}

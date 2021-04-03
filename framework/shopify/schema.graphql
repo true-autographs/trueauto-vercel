@@ -7460,6 +7460,7 @@ The price value (fixed or percentage) for a discount application.
 union PricingValue = MoneyV2 | PricingPercentageValue
 
 """
+SECTION: Product
 A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.
 For example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty).
 """

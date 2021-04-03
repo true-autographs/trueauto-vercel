@@ -1,0 +1,17 @@
+$layout-unit: 18px;
+
+$grid-gutter: $layout-unit * 2;
+
+.productgrid {
+  width: 100%;
+  display: flex;
+  margin-left: -$grid-gutter;
+}
+
+.productgrid__column {
+  padding-left: $grid-gutter;
+
+  & > * {
+    margin-bottom: $grid-gutter;
+  }
+}

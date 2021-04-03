@@ -171,6 +171,9 @@ export interface Product extends Entity {
   options: ProductOption[]
   sku?: string
   type?: string
+  tags?: string[]
+  categories?: string[]
+  createdAt?: string
 }
 
 interface ProductOption extends Entity {
@@ -186,6 +189,9 @@ interface ProductOptionValues {
 interface ProductImage {
   url: string
   alt?: string
+  width: number
+  height: number
+  altText?: string
 }
 
 interface ProductVariant2 {

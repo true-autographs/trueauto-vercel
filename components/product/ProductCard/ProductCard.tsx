@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
 import type { Product } from '@commerce/types'
@@ -6,8 +6,44 @@ import s from './ProductCard.module.css'
 import Image, { ImageProps } from 'next/image'
 import WishlistButton from '@components/wishlist/WishlistButton'
 
-interface Props {
-  className?: string
+import getSymbolFromCurrency from 'currency-symbol-map'
+import { titleCase } from 'title-case'
+
+/*  */
+const checkIfKeysExist = (keys, hostObject) =>
+  keys.forEach((key) => {
+    if (hostObject[key]) {
+      console.log(`Exists: '${key}' exists in host object.`)
+    } else {
+      console.log(`Missing: '${key}' is not a key in host object.`)
+    }
+  })
+
+const convertToCurrencySymbol = (currencyCode: string) =>
+  getSymbolFromCurrency(currencyCode)
+
+const buildPrice = (price: {
+  currencyCode: string | undefined
+  value: number
+}) => {
+  const { currencyCode, value } = price
+  const symbol = currencyCode ? convertToCurrencySymbol(currencyCode) : ''
+
+  return `${symbol}${value}`
+}
+
+const prepareTitle = (title: string | undefined) =>
+  title ? titleCase(title.toLowerCase()) : ''
+
+const sizedImageHeight = (
+  image: { width: number; height: number },
+  newWidth: number
+) => (image.height * newWidth) / image.width
+
+/*  */
+
+interface CardProps {
+  /* className?: string */
   product: Product
   variant?: 'slim' | 'simple'
   imgProps?: Omit<ImageProps, 'src'>
@@ -15,7 +51,40 @@ interface Props {
 
 const placeholderImg = '/product-img-placeholder.svg'
 
-const ProductCard: FC<Props> = ({
+const ProductCard = (cardProps: CardProps) => {
+  const { product } = cardProps
+  const priceInfo = buildPrice(product.price)
+
+  const cardTitle = prepareTitle(product.name)
+
+  const cardImageWidth = 320
+
+  return (
+    <Link href={`product/${product.slug}`}>
+      <a className={'boop'} key={product.path}>
+        <article>
+          {product?.images && (
+            <Image
+              layout="responsive"
+              width={cardImageWidth}
+              height={sizedImageHeight(product.images[0], cardImageWidth)}
+              alt={product.images[0].altText || product.name || 'product image'}
+              src={product.images?.[0]?.url || placeholderImg}
+            />
+          )}
+
+          <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+            <h1>{cardTitle}</h1>
+            <h2>{product.productType}</h2>
+          </div>
+          <span>{priceInfo}</span>
+        </article>
+      </a>
+    </Link>
+  )
+}
+
+/* const ProductCard: FC<Props> = ({
   className,
   product,
   variant,
@@ -48,6 +117,29 @@ const ProductCard: FC<Props> = ({
           <div className={s.squareBg} />
           <div className="flex flex-row justify-between box-border w-full z-20 absolute">
             <div className="absolute top-0 left-0 pr-16 max-w-full">
+              <h3 className={s.productTitle}>
+                <span>Cat: {product.categories}</span>
+              </h3>
+              <h3 className={s.productTitle}>
+                <span>Pub: {product.createdAt}</span>
+              </h3>
+              <h3 className={s.productTitle}>
+                <span>
+                  Tags: {product.tags ? product.tags.join(' ') : 'nope'}
+                </span>
+              </h3>
+              <h3 className={s.productTitle}>
+                <span>Type: {product.productType}</span>
+              </h3>
+              <h3 className={s.productTitle}>
+                <span>Coll: {product.collections?.first}</span>
+              </h3>
+              <h3 className={s.productTitle}>
+                <span>id: {product.id}</span>
+              </h3>
+              <h3 className={s.productTitle}>
+                <span>avail: {product.availableForSale}</span>
+              </h3>
               <h3 className={s.productTitle}>
                 <span>{product.name}</span>
               </h3>
@@ -83,6 +175,6 @@ const ProductCard: FC<Props> = ({
       )}
     </a>
   </Link>
-)
+) */
 
 export default ProductCard

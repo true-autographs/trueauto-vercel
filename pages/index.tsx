@@ -78,60 +78,6 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      {/* TODO: Text button and linking */}
-      {/* <section
-        className={'w-screen flex md:flex-wrap'}
-        style={{ height: '80vh' }}
-      >
-        <section
-          style={{
-            width: '50%',
-            height: '100%',
-            backgroundColor: '#000000',
-            position: 'relative',
-          }}
-        >
-          <img
-            src={'/IRVING_FRYAR_PHOTO_1024x1024.jpg'}
-            alt="all products"
-            style={{
-              position: 'absolute',
-              top: '0',
-              left: '0',
-              width: '100%',
-              minWidth: '100%',
-              height: '100%',
-              minHeight: '100%',
-              objectFit: 'cover',
-              opacity: '60%',
-            }}
-          />
-        </section>
-        <section
-          style={{
-            width: '50%',
-            height: '100%',
-            backgroundColor: '#000000',
-            position: 'relative',
-          }}
-        >
-          <img
-            src={'/IRVING_FRYAR_PHOTO_1024x1024.jpg'}
-            alt="all products"
-            style={{
-              position: 'absolute',
-              top: '0',
-              left: '0',
-              width: '100%',
-              minWidth: '100%',
-              height: '100%',
-              minHeight: '100%',
-              objectFit: 'cover',
-              opacity: '60%',
-            }}
-          />
-        </section>
-      </section> */}
       <HomeHero />
 
       <Marquee variant="primary">
@@ -144,33 +90,6 @@ export default function Home({
           />
         ))}
       </Marquee>
-      {/* <Marquee variant="secondary">
-        {products.slice(0, 3).map((product, i) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            variant="slim"
-            imgProps={{
-              width: 320,
-              height: 320,
-            }}
-          />
-        ))}
-      </Marquee> */}
-
-      {/* TODO: Make card grid for signings -- cards not poster spread */}
-      {/* <Grid>
-        {products.slice(0, 3).map((product, i) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            imgProps={{
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
-            }}
-          />
-        ))}
-      </Grid> */}
 
       <section className={ES.eventsWrapper}>
         <div className={ES.cardsWrapper}>

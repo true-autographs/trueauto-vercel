@@ -1,4 +1,5 @@
 import '@assets/main.css'
+import '@assets/main.scss'
 import '@assets/chrome-bug.css'
 import 'keen-slider/keen-slider.min.css'
 

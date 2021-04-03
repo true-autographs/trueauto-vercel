@@ -1,11 +1,11 @@
 import cn from 'classnames'
 import Image from 'next/image'
 import { NextSeo } from 'next-seo'
-import { FC, useState } from 'react'
-import s from './ProductView.module.css'
+import React, { FC, useState } from 'react'
+import s from './ProductView.module.scss'
 
 import { Swatch, ProductSlider } from '@components/product'
-import { Button, Container, Text, useUI } from '@components/ui'
+import { ContentSection, Button, Container, Text, useUI } from '@components/ui'
 
 import type { Product } from '@commerce/types'
 import usePrice from '@framework/product/use-price'
@@ -13,6 +13,11 @@ import { useAddItem } from '@framework/cart'
 
 import { getVariant, SelectedOptions } from '../helpers'
 import WishlistButton from '@components/wishlist/WishlistButton'
+import products from '@framework/api/catalog/products'
+
+////////////////////////////////
+
+////////////////////////////////
 
 interface Props {
   className?: string
@@ -20,7 +25,70 @@ interface Props {
   product: Product
 }
 
-const ProductView: FC<Props> = ({ product }) => {
+const ProductView = (props: Props) => {
+  const addItem = useAddItem()
+  const { product } = props
+  const { price } = usePrice({
+    amount: product.price.value,
+    baseAmount: product.price.retailPrice,
+    currencyCode: product.price.currencyCode!,
+  })
+
+  const { openSidebar } = useUI()
+
+  const [loading, setLoading] = useState(false)
+  const [choices, setChoices] = useState<SelectedOptions>({
+    size: null,
+    color: null,
+  })
+  const [cardError, setCartError] = useState(false)
+
+  const variant = getVariant(product, choices)
+
+  const addToCart = async () => {
+    setLoading(true)
+    try {
+      await addItem({
+        productId: String(product.id),
+        variantId: String(variant ? variant.id : product.variants[0].id),
+      })
+      openSidebar()
+      setLoading(false)
+      setCartError(false)
+    } catch (err) {
+      setLoading(false)
+      setCartError(true)
+    }
+  }
+
+  return (
+    //Replace Container with custom wrapper
+    <>
+      <NextSeo
+        title={product.name}
+        description={product.description}
+        openGraph={{
+          type: 'website',
+          title: product.name,
+          description: product.description,
+          images: [
+            {
+              url: product.images[0]?.url!,
+              width: 800,
+              height: 600,
+              alt: product.name,
+            },
+          ],
+        }}
+      />
+      <ContentSection noPadVertical={true} el="section">
+        <div className="Test"></div>
+      </ContentSection>
+    </>
+  )
+}
+
+/* const ProductView: FC<Props> = ({ product }) => {
   const addItem = useAddItem()
   const { price } = usePrice({
     amount: product.price.value,
@@ -36,7 +104,8 @@ const ProductView: FC<Props> = ({ product }) => {
 
   // Select the correct variant based on choices
   const variant = getVariant(product, choices)
-
+  console.log('variant:')
+  console.log(variant)
   const addToCart = async () => {
     setLoading(true)
     try {
@@ -50,6 +119,8 @@ const ProductView: FC<Props> = ({ product }) => {
       setLoading(false)
     }
   }
+
+  console.log(product)
 
   return (
     <Container className="max-w-none w-full" clean>
@@ -73,12 +144,12 @@ const ProductView: FC<Props> = ({ product }) => {
       <div className={cn(s.root, 'fit')}>
         <div className={cn(s.productDisplay, 'fit')}>
           <div className={s.nameBox}>
-            {/* <h1 className={s.name}>{product.name}</h1>
+            <h1 className={s.name}>{product.name}</h1>
             <div className={s.price}>
               {product.price.value}
               {` `}
               {product.price?.currencyCode}
-            </div> */}
+            </div>
           </div>
 
           <div className={s.sliderContainer}>
@@ -120,7 +191,7 @@ const ProductView: FC<Props> = ({ product }) => {
                   ${product.price.value}
                 </h2>
                 <div className="flex flex-row py-4">
-                  {/* {opt.values.map((v, i: number) => {
+                  {opt.values.map((v, i: number) => {
                     const active = (choices as any)[
                       opt.displayName.toLowerCase()
                     ]
@@ -142,7 +213,7 @@ const ProductView: FC<Props> = ({ product }) => {
                         }}
                       />
                     )
-                  })} */}
+                  })}
                 </div>
               </div>
             ))}
@@ -159,6 +230,12 @@ const ProductView: FC<Props> = ({ product }) => {
               <Text html={product.description} />
             </div>
           </section>
+          {
+            //TODO: add links fo tags
+            product.tags
+              ? product.tags.map((tag) => <button>{tag}</button>)
+              : ''
+          }
           <div>
             <Button
               aria-label="Add to Cart"
@@ -182,6 +259,6 @@ const ProductView: FC<Props> = ({ product }) => {
       </div>
     </Container>
   )
-}
+} */
 
 export default ProductView

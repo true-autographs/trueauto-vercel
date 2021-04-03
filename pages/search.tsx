@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { Layout } from '@components/common'
-import { ProductCard } from '@components/product'
+import { ProductCard, ProductGrid } from '@components/product'
 import { Container, Grid, Skeleton } from '@components/ui'
 
 import { getConfig } from '@framework/api'
@@ -344,12 +344,11 @@ export default function Search({
           )}
 
           {data ? (
-            <Grid layout="normal">
+            /* <Grid layout="normal">
               {data.products.map((product: Product) => (
                 <>
                   <ProductCard
                     variant="simple"
-                    key={product.path}
                     className="animated fadeIn"
                     product={product}
                     imgProps={{
@@ -359,7 +358,14 @@ export default function Search({
                   />
                 </>
               ))}
-            </Grid>
+            </Grid> */
+            <ProductGrid>
+              {data.products.map((product: Product) => (
+                <>
+                  <ProductCard product={product} />
+                </>
+              ))}
+            </ProductGrid>
           ) : (
             <Grid layout="normal">
               {rangeMap(12, (i) => (

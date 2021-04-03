@@ -1,5 +1,6 @@
 const commerce = require('./commerce.config.json')
 const withCommerceConfig = require('./framework/commerce/with-config')
+const path = require('path')
 
 const isBC = commerce.provider === 'bigcommerce'
 const isShopify = commerce.provider === 'shopify'
