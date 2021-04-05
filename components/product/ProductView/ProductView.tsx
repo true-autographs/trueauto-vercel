@@ -4,8 +4,17 @@ import { NextSeo } from 'next-seo'
 import React, { FC, useState } from 'react'
 import s from './ProductView.module.scss'
 
+import ImageGallery from './components/ImageGallery'
+
 import { Swatch, ProductSlider } from '@components/product'
-import { ContentSection, Button, Container, Text, useUI } from '@components/ui'
+import {
+  ContentSection,
+  ContentGrid,
+  Button,
+  Container,
+  Text,
+  useUI,
+} from '@components/ui'
 
 import type { Product } from '@commerce/types'
 import usePrice from '@framework/product/use-price'
@@ -82,7 +91,15 @@ const ProductView = (props: Props) => {
         }}
       />
       <ContentSection noPadVertical={true} el="section">
-        <div className="Test"></div>
+        <ContentGrid>
+          <ImageGallery>{product}</ImageGallery>
+          <div className={s.info}>
+            <h1>{product.name}</h1>
+            <h2>{product.description}</h2>
+            <h3>{product.price.value}</h3>
+            <h4>{product.price.currencyCode}</h4>
+          </div>
+        </ContentGrid>
       </ContentSection>
     </>
   )

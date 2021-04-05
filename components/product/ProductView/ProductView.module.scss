@@ -1,3 +1,5 @@
+@import '@assets/globals.scss';
+
 /* .root {
   @apply relative grid items-start gap-8 grid-cols-1 overflow-x-hidden;
 
@@ -95,3 +97,25 @@
   }
 }
  */
+
+@mixin material-shadow-8dp {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
+    0 3px 5px -1px rgba(0, 0, 0, 0.2);
+}
+
+.imagegallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  row-gap: $l-gutter;
+
+  & > * {
+    @include material-shadow-8dp;
+  }
+}
+
+.info {
+  position: fixed;
+  width: 100%;
+}

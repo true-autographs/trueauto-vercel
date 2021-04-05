@@ -25,11 +25,6 @@ $fs-desktop-xxl: $fs-desktop-xl * $typo-ratio-desktop;
 $fs-desktop-xxxl: $fs-desktop-xxl * $typo-ratio-desktop;
 $fs-desktop-jumbo: $fs-desktop-xxxl * $typo-ratio-desktop;
 
-// Allow user to set base font size
-:root {
-  font-size: 100%;
-}
-
 // Typography sizes
 @mixin typo-size-sm {
   font-size: $fs-mobile-sm;

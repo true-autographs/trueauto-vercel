@@ -10,14 +10,14 @@ import getSymbolFromCurrency from 'currency-symbol-map'
 import { titleCase } from 'title-case'
 
 /*  */
-const checkIfKeysExist = (keys, hostObject) =>
+/* const checkIfKeysExist = (keys, hostObject) =>
   keys.forEach((key) => {
     if (hostObject[key]) {
       console.log(`Exists: '${key}' exists in host object.`)
     } else {
       console.log(`Missing: '${key}' is not a key in host object.`)
     }
-  })
+  }) */
 
 const convertToCurrencySymbol = (currencyCode: string) =>
   getSymbolFromCurrency(currencyCode)

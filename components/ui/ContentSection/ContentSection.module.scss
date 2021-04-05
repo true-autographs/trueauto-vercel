@@ -1,8 +1,10 @@
-@import '@assets/scss-modules/layout.scss';
+@import '@assets/globals.scss';
 
 .contentsection {
   width: 100%;
   padding: $l-gutter;
+  max-width: $breakpoint-desktop-lg;
+  margin: 0 auto;
 }
 
 .nopadvertical {
