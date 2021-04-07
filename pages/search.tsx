@@ -296,6 +296,7 @@ export default function Search({
             </div>
           </div>
         </div>
+
         {/* Products */}
         <div className="col-span-8 order-3 lg:order-none">
           {(q || activeCategory || activeBrand) && (
@@ -327,8 +328,7 @@ export default function Search({
                       </>
                     ) : (
                       <>
-                        There are no products that match the selected category &
-                        designer
+                        There are no products that match the selected criteria
                       </>
                     )}
                   </span>
@@ -338,6 +338,7 @@ export default function Search({
                   Searching for: "<strong>{q}</strong>"
                 </>
               ) : (
+                //TODO: add searching animation
                 <>Searching...</>
               )}
             </div>
@@ -362,7 +363,7 @@ export default function Search({
             <ProductGrid>
               {data.products.map((product: Product) => (
                 <>
-                  <ProductCard product={product} />
+                  <ProductCard product={product} key={product.name} />
                 </>
               ))}
             </ProductGrid>

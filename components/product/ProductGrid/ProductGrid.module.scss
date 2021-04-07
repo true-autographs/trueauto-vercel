@@ -12,6 +12,6 @@ $grid-gutter: $layout-unit * 2;
   padding-left: $grid-gutter;
 
   & > * {
-    margin-bottom: $grid-gutter;
+    margin-bottom: $grid-gutter * 2;
   }
 }

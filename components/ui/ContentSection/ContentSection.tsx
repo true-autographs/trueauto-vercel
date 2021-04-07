@@ -11,7 +11,7 @@ interface Props {
 }
 
 const ContentSection = ({
-  className,
+  className = '',
   children,
   noPadVertical = false,
   el = 'div',
@@ -21,14 +21,14 @@ const ContentSection = ({
   > = el as any
 
   const noPaddingClass = s.nopadvertical
-  const rootClassname = cn(
-    s.contentsection,
-    { noPaddingClass: noPadVertical },
-    { className: className }
-  )
+
+  const rootClassname = cn(s.contentsection, {
+    [className]: className,
+    [noPaddingClass]: noPadVertical,
+  })
 
   s.contentsection +
-    (className ? `className` : '') +
+    (className ? className : '') +
     (noPadVertical ? ` ${s['contentsection--nopadvertical']}` : '')
 
   return <Component className={rootClassname}>{children}</Component>

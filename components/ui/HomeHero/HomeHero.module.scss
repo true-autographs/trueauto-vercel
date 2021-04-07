@@ -1,7 +1,25 @@
+@import '@assets/globals.scss';
+
 .container {
+  color: inherit;
+
+  height: 100vh;
+}
+
+.herogrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+
+  height: 100%;
+
+  column-gap: $l-gutter;
+  row-gap: $l-gutter;
+}
+/* .container {
   width: 100vw;
   height: auto;
-  background-color: var(--brand-color-orange-100);
 
   position: relative;
 
@@ -12,14 +30,13 @@
   padding: 1.5rem 1.5rem 0 1.5rem;
 
   @media screen and (min-width: 800px) {
-    /* padding: 0 4rem 0 4rem; */
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     height: 75vh;
     min-height: 30vw;
     max-height: 150vw;
   }
-}
+} */
 
 .linkWrapper {
   display: block;
@@ -43,7 +60,7 @@
 
   overflow: hidden;
 
-  background-color: #e87722;
+  background-color: $brandcolor-cyan-100;
 }
 
 .backgroundImage {
@@ -56,12 +73,12 @@
   filter: grayscale(100%) saturate(40);
   z-index: 0;
   /* transform: translate(-50%, -50%); */
-  opacity: 90%;
+  opacity: 95%;
   transition: all 0.3s ease-out;
 }
 
 .backgroundImage:hover {
-  opacity: 60%;
+  opacity: 75%;
   transform: scale(1.1);
 }
 

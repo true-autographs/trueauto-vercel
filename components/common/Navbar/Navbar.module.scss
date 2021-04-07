@@ -22,3 +22,10 @@
     transform: scale(1.05);
   }
 }
+
+.navlink {
+  color: inherit;
+  &active {
+    text-decoration: underline;
+  }
+}

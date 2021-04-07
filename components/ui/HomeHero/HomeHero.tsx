@@ -1,8 +1,9 @@
 import React, { FC } from 'react'
 import { Container } from '@components/ui'
 import { RightArrow } from '@components/icons'
-import s from './HomeHero.module.css'
+import s from './HomeHero.module.scss'
 import Link from 'next/link'
+import ContentSection from '../ContentSection'
 
 interface Props {
   className?: string
@@ -24,32 +25,34 @@ const events = {
 
 const HomeHero = () => {
   return (
-    <section className={s.container}>
-      <a href={products.pageLink} className={s.linkWrapper}>
-        <div className={s.section}>
-          <img
-            className={s.backgroundImage}
-            src={products.imageUrl}
-            alt="product intro image"
-          />
-        </div>
-        <div className={s.textBox}>
-          <p>{products.title}</p>
-        </div>
-      </a>
-      <a href={events.pageLink} className={s.linkWrapper}>
-        <div className={s.section}>
-          <img
-            className={s.backgroundImage}
-            src={events.imageUrl}
-            alt="events intro image"
-          />
-        </div>
-        <div className={s.textBox}>
-          <p>{events.title}</p>
-        </div>
-      </a>
-    </section>
+    <ContentSection className={s.container} el="section">
+      <div className={s.herogrid}>
+        <a href={products.pageLink} className={s.linkWrapper} key={'products'}>
+          <div className={s.section}>
+            <img
+              className={s.backgroundImage}
+              src={products.imageUrl}
+              alt="product intro image"
+            />
+          </div>
+          <div className={s.textBox}>
+            <p>{products.title}</p>
+          </div>
+        </a>
+        <a href={events.pageLink} className={s.linkWrapper} key={'events'}>
+          <div className={s.section}>
+            <img
+              className={s.backgroundImage}
+              src={events.imageUrl}
+              alt="events intro image"
+            />
+          </div>
+          <div className={s.textBox}>
+            <p>{events.title}</p>
+          </div>
+        </a>
+      </div>
+    </ContentSection>
   )
 }
 

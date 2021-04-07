@@ -1,5 +1,6 @@
 // Usable variables
-$font-sans: 'HK Grotesk', 'Helvetica Neue', 'Helvetica', sans-serif;
+//$font-sans: 'HK Grotesk', 'Helvetica Neue', 'Helvetica', sans-serif;
+$font-sans: 'HKGrotesk', serif;
 
 @mixin font-sans-100 {
   font-family: $font-sans;
@@ -16,7 +17,7 @@ $font-sans: 'HK Grotesk', 'Helvetica Neue', 'Helvetica', sans-serif;
 @mixin font-sans-200 {
   font-family: $font-sans;
   font-weight: 200;
-  font-style: italic;
+  font-style: normal;
 }
 
 @mixin font-sans-200-italic {
@@ -28,7 +29,7 @@ $font-sans: 'HK Grotesk', 'Helvetica Neue', 'Helvetica', sans-serif;
 @mixin font-sans-300 {
   font-family: $font-sans;
   font-weight: 300;
-  font-style: italic;
+  font-style: normal;
 }
 
 @mixin font-sans-300-italic {
@@ -40,7 +41,7 @@ $font-sans: 'HK Grotesk', 'Helvetica Neue', 'Helvetica', sans-serif;
 @mixin font-sans-400 {
   font-family: $font-sans;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
 }
 
 @mixin font-sans-400-italic {
@@ -52,7 +53,7 @@ $font-sans: 'HK Grotesk', 'Helvetica Neue', 'Helvetica', sans-serif;
 @mixin font-sans-500 {
   font-family: $font-sans;
   font-weight: 500;
-  font-style: italic;
+  font-style: normal;
 }
 
 @mixin font-sans-500-italic {
@@ -64,7 +65,7 @@ $font-sans: 'HK Grotesk', 'Helvetica Neue', 'Helvetica', sans-serif;
 @mixin font-sans-600 {
   font-family: $font-sans;
   font-weight: 600;
-  font-style: italic;
+  font-style: normal;
 }
 
 @mixin font-sans-600-italic {
@@ -76,7 +77,7 @@ $font-sans: 'HK Grotesk', 'Helvetica Neue', 'Helvetica', sans-serif;
 @mixin font-sans-700 {
   font-family: $font-sans;
   font-weight: 700;
-  font-style: italic;
+  font-style: normal;
 }
 
 @mixin font-sans-700-italic {
@@ -88,7 +89,7 @@ $font-sans: 'HK Grotesk', 'Helvetica Neue', 'Helvetica', sans-serif;
 @mixin font-sans-800 {
   font-family: $font-sans;
   font-weight: 800;
-  font-style: italic;
+  font-style: normal;
 }
 
 @mixin font-sans-800-italic {
@@ -100,7 +101,7 @@ $font-sans: 'HK Grotesk', 'Helvetica Neue', 'Helvetica', sans-serif;
 @mixin font-sans-900 {
   font-family: $font-sans;
   font-weight: 900;
-  font-style: italic;
+  font-style: nomal;
 }
 
 @mixin font-sans-900-italic {

@@ -28,15 +28,18 @@ import products from '@framework/api/catalog/products'
 
 ////////////////////////////////
 
-interface Props {
+/* interface Props {
   className?: string
   children?: any
   product: Product
-}
+} */
 
-const ProductView = (props: Props) => {
+const ProductView = ({ product }: { product: Product }) => {
+  if (!product.price.value) {
+    console.log('------------- failed ----------')
+    console.log(product)
+  }
   const addItem = useAddItem()
-  const { product } = props
   const { price } = usePrice({
     amount: product.price.value,
     baseAmount: product.price.retailPrice,
@@ -90,16 +93,24 @@ const ProductView = (props: Props) => {
           ],
         }}
       />
-      <ContentSection noPadVertical={true} el="section">
+      <ContentSection noPadVertical={false} el="section">
         <ContentGrid>
-          <ImageGallery>{product}</ImageGallery>
+          <ImageGallery product={product} />
           <div className={s.info}>
             <h1>{product.name}</h1>
             <h2>{product.description}</h2>
             <h3>{product.price.value}</h3>
             <h4>{product.price.currencyCode}</h4>
           </div>
+          <div className={s.details}>
+            <h2>Details</h2>
+          </div>
         </ContentGrid>
+      </ContentSection>
+      <ContentSection el="section">
+        <h1>Related Projects</h1>
+        <article>item1</article>
+        <article>item2</article>
       </ContentSection>
     </>
   )

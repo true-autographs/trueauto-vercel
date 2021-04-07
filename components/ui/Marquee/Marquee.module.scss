@@ -1,4 +1,4 @@
-.root {
+/* .root {
   @apply w-full relative;
   height: 320px;
   min-width: 100%;
@@ -18,6 +18,19 @@
 }
 
 .secondary {
-  /* @apply bg-black; */
   background-color: white;
+} */
+
+@import '@assets/globals.scss';
+
+.hometicker {
+  width: 100%;
+  position: relative;
+}
+
+.hometicker__contents {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }

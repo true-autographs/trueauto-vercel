@@ -8,13 +8,25 @@ interface Props {
 const ProductGrid = (props: Props) => {
   const children = props.children || ''
   return (
-    <Masonry
+    /* <Masonry
       className={s.productgrid}
       columnClassName={s.productgrid__column}
       breakpointCols={3}
     >
+      
+    </Masonry> */
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        width: '100%',
+        columnGap: '36px',
+        rowGap: '36px',
+        alignItems: 'end',
+      }}
+    >
       {children}
-    </Masonry>
+    </div>
   )
 }
 

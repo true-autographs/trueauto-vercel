@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
 import type { Product } from '@commerce/types'
-import s from './ProductCard.module.css'
+import s from './ProductCard.module.scss'
 import Image, { ImageProps } from 'next/image'
 import WishlistButton from '@components/wishlist/WishlistButton'
 
@@ -61,11 +61,12 @@ const ProductCard = (cardProps: CardProps) => {
 
   return (
     <Link href={`product/${product.slug}`}>
-      <a className={'boop'} key={product.path}>
-        <article>
+      <a className={s.linkwrapper} key={product.path}>
+        <article className={s.card}>
           {product?.images && (
             <Image
-              layout="responsive"
+              className={s.cardImage}
+              layout={'responsive'}
               width={cardImageWidth}
               height={sizedImageHeight(product.images[0], cardImageWidth)}
               alt={product.images[0].altText || product.name || 'product image'}
@@ -73,11 +74,14 @@ const ProductCard = (cardProps: CardProps) => {
             />
           )}
 
-          <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
-            <h1>{cardTitle}</h1>
-            <h2>{product.productType}</h2>
+          <div
+            className={s.titleblock}
+            style={{ display: 'flex', flexDirection: 'column-reverse' }}
+          >
+            <h1 className={s.title}>{cardTitle}</h1>
+            <h2 className={s.type}>{product.productType}</h2>
           </div>
-          <span>{priceInfo}</span>
+          <p className={s.price}>{priceInfo}</p>
         </article>
       </a>
     </Link>

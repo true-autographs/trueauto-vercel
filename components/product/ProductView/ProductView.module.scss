@@ -116,6 +116,16 @@
 }
 
 .info {
-  position: fixed;
+  align-self: start;
+  position: sticky;
+  top: $l-gutter + $l-nav-height;
   width: 100%;
+
+  & * {
+    max-width: 70ch;
+  }
+}
+
+.details {
+  grid-column: 1/-1;
 }

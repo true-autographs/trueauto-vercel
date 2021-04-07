@@ -6,7 +6,7 @@ export type SelectedOptions = {
 }
 
 export function getVariant(product: Product, opts: SelectedOptions) {
-  console.log(product)
+  //console.log(product)
 
   const variant = product.variants.find((variant) => {
     return Object.entries(opts).every(([key, value]) =>

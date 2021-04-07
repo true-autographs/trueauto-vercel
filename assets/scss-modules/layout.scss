@@ -1,4 +1,6 @@
 $l-unit: 18px;
 $l-gutter: $l-unit * 2;
 
-$l-max-width: $l-unit * 90;
+$l-max-width: $breakpoint-desktop-lg;
+
+$l-nav-height: $l-unit * 4.22;

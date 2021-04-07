@@ -3,12 +3,11 @@
 .contentsection {
   width: 100%;
   padding: $l-gutter;
-  max-width: $breakpoint-desktop-lg;
+  max-width: $l-max-width;
   margin: 0 auto;
 }
 
 .nopadvertical {
   @extend .contentsection;
-
   padding: 0 $l-gutter;
 }

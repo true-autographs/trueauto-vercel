@@ -1,5 +1,6 @@
+// also update at @ui/breakpoints
 $breakpoint-tablet: 700px;
-$breakpoint-desktop: 1000px;
+$breakpoint-desktop: 950px;
 $breakpoint-desktop-lg: 1500px;
 
 @mixin query-tablet {

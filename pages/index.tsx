@@ -1,5 +1,5 @@
 import { Layout } from '@components/common'
-import { Grid, Marquee, HomeHero, Hero, SportLeagueCard } from '@components/ui'
+import { Grid, HomeHero, Hero, SportLeagueCard, Marquee } from '@components/ui'
 import { ProductCard } from '@components/product'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
@@ -13,6 +13,8 @@ import { relative } from 'path'
 import image from 'next/image'
 
 import { BsArrowRight } from 'react-icons/bs'
+import Ticker from 'react-ticker'
+//import Marquee from 'react-fast-marquee'
 
 import ES from './es.module.css'
 import FP from './fp.module.css'
@@ -46,30 +48,50 @@ export async function getStaticProps({
 const marqueeItems = [
   {
     name: 'NFL',
-    imageUrl: 'sports-logos-05.png',
+    imageUrl: 'league_nfl.jpg',
     link: '/search/nfl',
   },
   {
     name: 'NBA',
-    imageUrl: 'sports-logos-02.png',
+    imageUrl: 'league_nba.jpg',
     link: '/search/nba',
   },
   {
     name: 'MLB',
-    imageUrl: 'sports-logos-03.png',
+    imageUrl: 'league_mlb.jpg',
     link: '/search/mlb',
   },
   {
     name: 'NHL',
-    imageUrl: 'sports-logos-01.png',
+    imageUrl: 'league_nhl.jpg',
     link: '/search/nhl',
   },
   {
     name: 'MMA',
-    imageUrl: 'sports-logos-04.png',
+    imageUrl: 'league_mma.jpg',
     link: '/search/mma',
   },
+  {
+    name: 'Boxing',
+    imageUrl: 'league_boxing.jpg',
+    link: '/search/boxing',
+  },
+  {
+    name: 'Entertainment',
+    imageUrl: 'league_entertainment.jpg',
+    link: '/search/entertainment',
+  },
 ]
+
+const tickerItems = () =>
+  marqueeItems.map((item, index) => (
+    <SportLeagueCard
+      key={`${item.name}_${index}`}
+      name={item.name}
+      imageUrl={item.imageUrl}
+      pageLink={item.link}
+    />
+  ))
 
 export default function Home({
   products,
@@ -80,16 +102,7 @@ export default function Home({
     <>
       <HomeHero />
 
-      <Marquee variant="primary">
-        {marqueeItems.map((item) => (
-          <SportLeagueCard
-            key={item.name}
-            name={item.name}
-            imageUrl={item.imageUrl}
-            pageLink={item.link}
-          />
-        ))}
-      </Marquee>
+      <Marquee>{tickerItems()}</Marquee>
 
       <section className={ES.eventsWrapper}>
         <div className={ES.cardsWrapper}>

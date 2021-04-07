@@ -1,13 +1,79 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import Link from 'next/link'
-import { Logo, Container } from '@components/ui'
+import { useRouter } from 'next/router'
+import { Logo, Container, ContentSection } from '@components/ui'
 import { Searchbar, UserNav } from '@components/common'
+import cn from 'classnames'
 import NavbarRoot from './NavbarRoot'
-import s from './Navbar.module.css'
+import s from './Navbar.module.scss'
 
-const Navbar: FC = () => (
-  <NavbarRoot>
-    <Container>
+const TopAlert = () => {
+  const [isOpen, setIsOpen] = useState(true)
+
+  return isOpen ? (
+    <div
+      style={{
+        backgroundColor: 'black',
+        color: 'white',
+        paddingTop: '8px',
+        paddingBottom: '8px',
+      }}
+    >
+      <p style={{ textAlign: 'center', color: 'white' }}>
+        Here's a header and{' '}
+        <a href="/" style={{ textDecoration: 'underline' }}>
+          a link
+        </a>
+      </p>
+      <button
+        onClick={() => {
+          setIsOpen(false)
+        }}
+      >
+        close
+      </button>
+    </div>
+  ) : (
+    <></>
+  )
+}
+
+const LowerAlert = () => {
+  const isHome = useRouter().pathname === '/'
+  const [isOpen, setIsOpen] = useState(true)
+
+  return isOpen && isHome ? (
+    <div style={{ padding: '36px', backgroundColor: 'rgba(0,0,0,0.1)' }}>
+      <p style={{ textAlign: 'center' }}>sample text</p>
+      <p style={{ textAlign: 'center' }}>line 2</p>
+      <button
+        onClick={() => {
+          setIsOpen(false)
+        }}
+      >
+        close
+      </button>
+    </div>
+  ) : (
+    <></>
+  )
+}
+
+const NavLink = ({ url, title }: { url: string; title: string }) => {
+  const currentLink = useRouter().pathname
+  const isCurrent = currentLink === url
+  const classes = cn([s.navlink], { [s.navlinkactive]: isCurrent })
+
+  return (
+    <Link href={url} key={title}>
+      <a className={classes}>{title}</a>
+    </Link>
+  )
+}
+
+const NavElement = () => {
+  return (
+    <ContentSection noPadVertical={true}>
       <div
         className="relative flex flex-row justify-between py-4 align-center md:py-6"
         style={{ paddingTop: '.75rem', paddingBottom: '.75rem' }}
@@ -19,18 +85,10 @@ const Navbar: FC = () => (
             </a>
           </Link>
           <nav className="hidden ml-6 space-x-4 lg:block">
-            <Link href="/search">
-              <a className={''}>products</a>
-            </Link>
-            <Link href="/events">
-              <a className={''}>Signing events</a>
-            </Link>
-            <Link href="/news">
-              <a className={''}>news</a>
-            </Link>
-            <Link href="/search">
-              <a className={''}>Search</a>
-            </Link>
+            <NavLink url={'/products'} title={'products'} />
+            <NavLink url={'/signing events'} title={'signing events'} />
+            <NavLink url={'/news'} title={'news'} />
+            <NavLink url={'/search'} title={'search'} />
           </nav>
         </div>
 
@@ -43,10 +101,18 @@ const Navbar: FC = () => (
         </div>
       </div>
 
-      <div className="flex pb-4 lg:px-6 lg:hidden">
-        <Searchbar id="mobile-search" />
-      </div>
-    </Container>
+      {/* <div className="flex pb-4 lg:px-6 lg:hidden">
+      <Searchbar id="mobile-search" />
+    </div> */}
+    </ContentSection>
+  )
+}
+
+const Navbar: FC = () => (
+  <NavbarRoot>
+    <TopAlert />
+    <NavElement />
+    <LowerAlert />
   </NavbarRoot>
 )
 
