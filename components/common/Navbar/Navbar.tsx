@@ -4,41 +4,12 @@ import { useRouter } from 'next/router'
 import { Logo, Container, ContentSection } from '@components/ui'
 import { Searchbar, UserNav } from '@components/common'
 import cn from 'classnames'
+
+import AnnouncementBar from './Components/AnnouncementBar'
 import NavbarRoot from './NavbarRoot'
 import s from './Navbar.module.scss'
 
-const TopAlert = () => {
-  const [isOpen, setIsOpen] = useState(true)
-
-  return isOpen ? (
-    <div
-      style={{
-        backgroundColor: 'black',
-        color: 'white',
-        paddingTop: '8px',
-        paddingBottom: '8px',
-      }}
-    >
-      <p style={{ textAlign: 'center', color: 'white' }}>
-        Here's a header and{' '}
-        <a href="/" style={{ textDecoration: 'underline' }}>
-          a link
-        </a>
-      </p>
-      <button
-        onClick={() => {
-          setIsOpen(false)
-        }}
-      >
-        close
-      </button>
-    </div>
-  ) : (
-    <></>
-  )
-}
-
-const LowerAlert = () => {
+/* const LowerAlert = () => {
   const isHome = useRouter().pathname === '/'
   const [isOpen, setIsOpen] = useState(true)
 
@@ -57,7 +28,7 @@ const LowerAlert = () => {
   ) : (
     <></>
   )
-}
+} */
 
 const NavLink = ({ url, title }: { url: string; title: string }) => {
   const currentLink = useRouter().pathname
@@ -110,9 +81,8 @@ const NavElement = () => {
 
 const Navbar: FC = () => (
   <NavbarRoot>
-    <TopAlert />
+    <AnnouncementBar showInitially={true} />
     <NavElement />
-    <LowerAlert />
   </NavbarRoot>
 )
 

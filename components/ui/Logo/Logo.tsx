@@ -1,6 +1,6 @@
 /* TODO: Increase logo size, drop navbar padding */
-const Logo = ({ className = '', ...props }) => (
-  <img width="50" height="50" src="/web_simple_orange.svg" />
+const Logo = ({ className = '' }) => (
+  <img width="50" height="50" src="/web_simple_blue.svg" />
 )
 
 export default Logo

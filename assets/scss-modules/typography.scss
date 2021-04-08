@@ -90,25 +90,29 @@ $fs-desktop-jumbo: $fs-desktop-xxxl * $typo-ratio-desktop;
 }
 
 // Helper Variables
-$all-caps-text-spacing: 0.5em;
+$all-caps-text-spacing: 0.2em;
 
 // Typography
+@mixin typo-allcapped {
+  text-transform: uppercase;
+  letter-spacing: $all-caps-text-spacing;
+}
+
 @mixin typo-text {
-  @extend font-sans-400;
-  @extend type-size-base;
+  @include font-sans-400;
+  @include typo-size-base;
   color: $brandcolor-black-80;
 }
 
 @mixin typo-subtext {
-  @extend font-sans-400;
-  @extend type-size-sm;
+  @include font-sans-400;
+  @include typo-size-sm;
   color: $brandcolor-black-80;
 }
 
 @mixin typo-button {
-  @extend font-sans-800;
-  @extend type-size-base;
+  @include font-sans-800;
+  @include typo-size-base;
   color: $brandcolor-black-100;
-  text-transform: uppercase;
-  letter-spacing: $all-caps-text-spacing;
+  @include typo-allcapped;
 }

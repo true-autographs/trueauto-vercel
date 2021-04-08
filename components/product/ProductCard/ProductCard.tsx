@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import cn from 'classnames'
+//import cn from 'classnames'
 import Link from 'next/link'
 import type { Product } from '@commerce/types'
 import s from './ProductCard.module.scss'
@@ -47,21 +47,23 @@ interface CardProps {
   product: Product
   variant?: 'slim' | 'simple'
   imgProps?: Omit<ImageProps, 'src'>
+  hideInfo?: boolean
 }
 
 const placeholderImg = '/product-img-placeholder.svg'
 
 const ProductCard = (cardProps: CardProps) => {
-  const { product } = cardProps
+  const { product, hideInfo } = cardProps
   const priceInfo = buildPrice(product.price)
 
   const cardTitle = prepareTitle(product.name)
 
   const cardImageWidth = 320
 
+  console.log(product.path)
   return (
-    <Link href={`product/${product.slug}`}>
-      <a className={s.linkwrapper} key={product.path}>
+    <Link href={`/product${product.path}`}>
+      <a className={s.linkwrapper}>
         <article className={s.card}>
           {product?.images && (
             <Image
@@ -73,15 +75,20 @@ const ProductCard = (cardProps: CardProps) => {
               src={product.images?.[0]?.url || placeholderImg}
             />
           )}
-
-          <div
-            className={s.titleblock}
-            style={{ display: 'flex', flexDirection: 'column-reverse' }}
-          >
-            <h1 className={s.title}>{cardTitle}</h1>
-            <h2 className={s.type}>{product.productType}</h2>
-          </div>
-          <p className={s.price}>{priceInfo}</p>
+          {hideInfo ? (
+            ''
+          ) : (
+            <>
+              <div
+                className={s.titleblock}
+                style={{ display: 'flex', flexDirection: 'column-reverse' }}
+              >
+                <h1 className={s.title}>{cardTitle}</h1>
+                <h2 className={s.type}>{product.productType}</h2>
+              </div>
+              <p className={s.price}>{priceInfo}</p>
+            </>
+          )}
         </article>
       </a>
     </Link>

@@ -9,6 +9,7 @@ export interface State {
   modalView: string
   toastText: string
   userAvatar: string
+  announcement: boolean
 }
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
   displayToast: false,
   toastText: '',
   userAvatar: '',
+  announcement: true,
 }
 
 type Action =
@@ -57,6 +59,12 @@ type Action =
   | {
       type: 'SET_USER_AVATAR'
       value: string
+    }
+  | {
+      type: 'SHOW_ANNOUNCEMENT'
+    }
+  | {
+      type: 'CLOSE_ANNOUNCEMENT'
     }
 
 type MODAL_VIEWS =
@@ -140,6 +148,18 @@ function uiReducer(state: State, action: Action) {
         userAvatar: action.value,
       }
     }
+    case 'SHOW_ANNOUNCEMENT': {
+      return {
+        ...state,
+        announcement: true,
+      }
+    }
+    case 'CLOSE_ANNOUNCEMENT': {
+      return {
+        ...state,
+        announcement: false,
+      }
+    }
   }
 }
 
@@ -170,6 +190,9 @@ export const UIProvider: FC = (props) => {
   const setModalView = (view: MODAL_VIEWS) =>
     dispatch({ type: 'SET_MODAL_VIEW', view })
 
+  const showAnnouncement = () => dispatch({ type: 'SHOW_ANNOUNCEMENT' })
+  const closeAnnouncement = () => dispatch({ type: 'CLOSE_ANNOUNCEMENT' })
+
   const value = useMemo(
     () => ({
       ...state,
@@ -185,6 +208,8 @@ export const UIProvider: FC = (props) => {
       openToast,
       closeToast,
       setUserAvatar,
+      showAnnouncement,
+      closeAnnouncement,
     }),
     [state]
   )

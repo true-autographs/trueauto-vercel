@@ -1,5 +1,12 @@
 import { Layout } from '@components/common'
-import { Grid, HomeHero, Hero, SportLeagueCard, Marquee } from '@components/ui'
+import {
+  Grid,
+  HomeHero,
+  Hero,
+  SportLeagueCard,
+  Marquee,
+  ProductSection,
+} from '@components/ui'
 import { ProductCard } from '@components/product'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
@@ -7,6 +14,7 @@ import Link from 'next/link'
 
 import { getConfig } from '@framework/api'
 import getAllProducts from '@framework/product/get-all-products'
+import getProduct from '@framework/product/get-product'
 import getSiteInfo from '@framework/common/get-site-info'
 import getAllPages from '@framework/common/get-all-pages'
 import { relative } from 'path'
@@ -16,8 +24,8 @@ import { BsArrowRight } from 'react-icons/bs'
 import Ticker from 'react-ticker'
 //import Marquee from 'react-fast-marquee'
 
-import ES from './es.module.css'
-import FP from './fp.module.css'
+import ES from './es.module.scss'
+import FP from './fp.module.scss'
 
 export async function getStaticProps({
   preview,
@@ -26,9 +34,14 @@ export async function getStaticProps({
   const config = getConfig({ locale })
 
   const { products } = await getAllProducts({
-    variables: { first: 12 },
+    variables: { first: 8 },
     config,
     preview,
+  })
+
+  const eventTypeName = 'AUTO TICKET'
+  const { products: events } = await getAllProducts({
+    variables: { first: 4, query: `product_type:${eventTypeName}` },
   })
 
   const { categories, brands } = await getSiteInfo({ config, preview })
@@ -40,6 +53,7 @@ export async function getStaticProps({
       categories,
       brands,
       pages,
+      events,
     },
     revalidate: 14400,
   }
@@ -97,90 +111,21 @@ export default function Home({
   products,
   brands,
   categories,
+  events,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <HomeHero />
-
       <Marquee>{tickerItems()}</Marquee>
 
-      <section className={ES.eventsWrapper}>
-        <div className={ES.cardsWrapper}>
-          <header className={ES.eventsHeader}>
-            <h1>Upcoming signing events</h1>
-          </header>
-          <article className={ES.eventCard}>
-            <div className={ES.imageWrapper}>
-              <img
-                src="artisgilmoresigningflyeralternate_d68a8c85-7dff-4c5c-be50-a09fd981080b.jpg"
-                alt="artis gilmore"
-              />
-            </div>
-            <div className={ES.info}>
-              <span className={ES.date}>FEB 27TH 2021</span>
-              <h1>
-                ARTIS GILMORE AUTOGRAPHED 11x14 PHOTO - PRIVATE AUTOGRAPH
-                SIGNING
-              </h1>
-              <div className={ES.description}>
-                <span className={ES.category}>NBA</span>
-                <p>
-                  Purchase of this ticket is for the ARTIS GILMORE private
-                  autograph signing FEB 27TH 2021.
-                </p>
-              </div>
-            </div>
-          </article>
-          <article className={ES.eventCard}>
-            <div className={ES.imageWrapper}>
-              <img
-                src="artisgilmoresigningflyeralternate_d68a8c85-7dff-4c5c-be50-a09fd981080b.jpg"
-                alt="artis gilmore"
-              />
-            </div>
-            <div className={ES.info}>
-              <span className={ES.date}>FEB 27TH 2021</span>
-              <h1>
-                ARTIS GILMORE AUTOGRAPHED 11x14 PHOTO - PRIVATE AUTOGRAPH
-                SIGNING
-              </h1>
-              <div className={ES.description}>
-                <span className={ES.category}>NBA</span>
-                <p>
-                  Purchase of this ticket is for the ARTIS GILMORE private
-                  autograph signing FEB 27TH 2021.
-                </p>
-              </div>
-            </div>
-          </article>
-          <article className={ES.eventCard}>
-            <div className={ES.imageWrapper}>
-              <img
-                src="artisgilmoresigningflyeralternate_d68a8c85-7dff-4c5c-be50-a09fd981080b.jpg"
-                alt="artis gilmore"
-              />
-            </div>
-            <div className={ES.info}>
-              <span className={ES.date}>FEB 27TH 2021</span>
-              <h1>
-                ARTIS GILMORE AUTOGRAPHED 11x14 PHOTO - PRIVATE AUTOGRAPH
-                SIGNING
-              </h1>
-              <div className={ES.description}>
-                <span className={ES.category}>NBA</span>
-                <p>
-                  Purchase of this ticket is for the ARTIS GILMORE private
-                  autograph signing FEB 27TH 2021.
-                </p>
-              </div>
-            </div>
-          </article>
-          <article className={ES.eventCard}></article>
-          {/* <footer className={ES.eventsFooter}>
-            <a href="/events">View all</a>
-          </footer> */}
-        </div>
-      </section>
+      <ProductSection
+        key={'signings'}
+        products={events}
+        alignBottom={false}
+        title={'Signing Events'}
+        pageUrl={`products/signingevents`}
+        hideInfo={true}
+      />
 
       {/* 
       
@@ -188,7 +133,16 @@ export default function Home({
 
       */}
 
-      <section className={FP.wrapper}>
+      <ProductSection
+        key={'products'}
+        products={products}
+        alignBottom={true}
+        title={'New Products'}
+        pageUrl={`products`}
+        hideInfo={false}
+      />
+
+      {/* <section className={FP.wrapper}>
         <div className={FP.cardsWrapper}>
           <header className={ES.eventsHeader}>
             <h1>Newest items</h1>
@@ -218,7 +172,7 @@ export default function Home({
             </Link>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* 
         News

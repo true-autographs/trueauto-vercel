@@ -1,0 +1,41 @@
+@import '@assets/globals.scss';
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: auto;
+
+  width: 100%;
+
+  column-gap: $l-gutter;
+  row-gap: $l-gutter;
+
+  align-items: center;
+
+  @include query-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include query-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.productGrid__alignbottom {
+  @extend .productGrid;
+  align-items: end;
+}
+
+.eventcard {
+  border-radius: $l-unit;
+  overflow: hidden;
+  @include BoxShadowBlue(1);
+  transition: all 0.2s linear;
+}
+
+.eventcard:hover {
+  @include BoxShadowBlue(12);
+}
+
+.info {
+}

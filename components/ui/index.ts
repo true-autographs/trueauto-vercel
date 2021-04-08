@@ -13,11 +13,12 @@ export { default as Modal } from './Modal'
 export { default as Text } from './Text'
 export { default as Input } from './Input'
 
+export { default as Breakpoints } from './Breakpoints'
 export { default as ContentSection } from './ContentSection'
 export { default as ContentGrid } from './ContentGrid'
 export { default as SportLeagueCard } from './SportLeagueCard'
 export { default as FullImage } from './FullImage'
+export { default as ProductSection } from './ProductSection'
+export { default as SectionTitle } from './SectionTitle'
 
 export { useUI } from './context'
-
-export { default as Breakpoints } from './Breakpoints'

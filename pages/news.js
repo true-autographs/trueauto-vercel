@@ -6,8 +6,8 @@ import Prismic from 'prismic-javascript'
 import { RichText, Date } from 'prismic-reactjs'
 import { client } from '../prismic-configuration'
 
-import FP from './fp.module.css'
-import ES from './es.module.css'
+import FP from './fp.module.scss'
+import ES from './es.module.scss'
 import autoprefixer from 'autoprefixer'
 import { NewsArticleJsonLd } from 'next-seo'
 

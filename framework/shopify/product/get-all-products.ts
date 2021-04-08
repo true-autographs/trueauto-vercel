@@ -7,7 +7,12 @@ import { Product } from '@commerce/types'
 
 type Variables = {
   first?: number
+  last?: number
+  after?: string
+  before?: string
+  reverse?: boolean
   field?: string
+  query?: Object
 }
 
 type ReturnType = {
