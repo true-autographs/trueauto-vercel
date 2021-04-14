@@ -11,6 +11,7 @@ import { getConfig } from '@framework/api'
 import getProduct from '@framework/product/get-product'
 import getAllPages from '@framework/common/get-all-pages'
 import getAllProductPaths from '@framework/product/get-all-product-paths'
+import getAllProducts from '@framework/product/get-all-products'
 
 export async function getStaticProps({
   params,
@@ -25,6 +26,10 @@ export async function getStaticProps({
     preview,
   })
 
+  const otherProducts = await getAllProducts({
+    variables: { first: 4 },
+  })
+
   if (!product) {
     throw new Error(`Product with slug '${params!.slug}' not found`)
   }
@@ -33,6 +38,7 @@ export async function getStaticProps({
     props: {
       pages,
       product,
+      otherProducts
     },
     revalidate: 200,
   }
@@ -41,29 +47,33 @@ export async function getStaticProps({
 export async function getStaticPaths({ locales }: GetStaticPathsContext) {
   const { products } = await getAllProductPaths()
 
+
   return {
     paths: locales
       ? locales.reduce<string[]>((arr, locale) => {
-          // Add a product path for every locale
-          products.forEach((product) => {
-            arr.push(`/${locale}/product${product.node.path}`)
-          })
-          return arr
-        }, [])
+        // Add a product path for every locale
+        products.forEach((product) => {
+          arr.push(`/${locale}/product${product.node.path}`)
+        })
+        return arr
+      }, [])
       : products.map((product) => `/product${product.node.path}`),
-    fallback: 'blocking',
+    fallback: 'blocking'
   }
 }
 
 export default function Slug({
   product,
+  otherProducts
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+
+  console.log(otherProducts)
   const router = useRouter()
 
   return router.isFallback ? (
     <h1>Loading...</h1> // TODO (BC) Add Skeleton Views
   ) : (
-    <ProductView product={product as any} />
+    <ProductView product={product as any} relatedProducts={otherProducts} />
   )
 }
 

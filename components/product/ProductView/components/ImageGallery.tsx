@@ -16,7 +16,7 @@ const ImageGallery = ({ product }: { product: Product }) => {
   return (
     <SimpleReactLightbox>
       <SRLWrapper options={{ settings: { hideControlsAfter: 1000 } }}>
-        <figure className={s.imagegallery}>
+        <figure className={s.imagegallery} style={{ cursor: 'pointer' }}>
           {product.images?.map((image) => {
             const altText =
               image.alt || image.altText || product.name || 'product image'

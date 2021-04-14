@@ -37,6 +37,10 @@ module.exports = withCommerceConfig({
         source: '/search/:category',
         destination: '/search',
       },
+      {
+        source: '/search/:category/:producttype',
+        destination: '/search'
+      }
     ].filter((x) => x)
   },
 })

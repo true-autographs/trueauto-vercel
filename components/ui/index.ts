@@ -20,5 +20,6 @@ export { default as SportLeagueCard } from './SportLeagueCard'
 export { default as FullImage } from './FullImage'
 export { default as ProductSection } from './ProductSection'
 export { default as SectionTitle } from './SectionTitle'
+export { default as ButtonRolling } from './ButtonRolling'
 
 export { useUI } from './context'

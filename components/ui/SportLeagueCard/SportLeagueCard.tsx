@@ -14,16 +14,17 @@ interface Props {
 
 const placeholderImg = '/product-img-placeholder.svg'
 
-// TODO: update to use 'link' instead of 'a'
 const SportLeagueCard: FC<Props> = ({ name, imageUrl, pageLink }) => (
-  <a href={pageLink} className={s.container}>
-    <div className={s.imageWrapper}>
-      <img src={imageUrl} alt={`Image of ${name} leagues`} />
-    </div>
-    <h1>{name}</h1>
-    {/* 
-    <p>{name}</p> */}
-  </a>
+  <Link href={pageLink}>
+    <a className={s.container}>
+      <div className={s.imageWrapper}>
+        <img src={imageUrl} alt={`Image of ${name} leagues`} />
+      </div>
+      <div className={s.overlay}>
+        <h1 className={s.leaguename}>{name}</h1>
+      </div>
+    </a>
+  </Link>
 )
 
 export default SportLeagueCard

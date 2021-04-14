@@ -20,6 +20,9 @@
   left: 0;
   width: 100%;
   padding-bottom: 100%;
+  overflow: hidden;
+  //border-radius: 50%;
+
 }
 .imageWrapper img {
   position: absolute;
@@ -37,16 +40,33 @@
 
 .imageWrapper:hover img {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-.container h1 {
-  position: relative;
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  left: 0;
+  bottom: 0;
+
+  padding: $l-unit;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  background: linear-gradient(to top, rgba(255,255,255,0.8), transparent)
+}
+
+.leaguename {
+
   display: block;
-  font-size: 1rem;
-  line-height: 1;
-  padding: 0;
-  margin: 0;
+
+  @include typo-size-base;
+  @include typo-allcapped;
+  
   text-align: center;
   font-family: 'HK Grotesk';
 

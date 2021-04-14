@@ -14,6 +14,7 @@ import {
   Container,
   Text,
   useUI,
+  ProductSection
 } from '@components/ui'
 
 import type { Product } from '@commerce/types'
@@ -33,12 +34,27 @@ import products from '@framework/api/catalog/products'
   children?: any
   product: Product
 } */
+const RelatedProducts = ({ products }: Product[]) => {
+  const relatedProducts = products.products
+  return (<ProductSection
+    key={'related products'}
+    products={relatedProducts}
+    alignBottom={true}
+    title={'Related Products'}
+    pageUrl={`/search`}
+    hideInfo={false}
+    buttonText={'View All Products'}
+  />)
+}
 
-const ProductView = ({ product }: { product: Product }) => {
+const ProductView = ({ product, relatedProducts }: { product: Product, relatedProducts: Product[] }) => {
   if (!product.price.value) {
     console.log('------------- failed ----------')
     console.log(product)
   }
+
+  console.log(product)
+
   const addItem = useAddItem()
   const { price } = usePrice({
     amount: product.price.value,
@@ -53,9 +69,13 @@ const ProductView = ({ product }: { product: Product }) => {
     size: null,
     color: null,
   })
-  const [cardError, setCartError] = useState(false)
+  const [cartError, setCartError] = useState(false)
 
-  const variant = getVariant(product, choices)
+  const hasVariants = product.variants && product.variants.length > 1
+
+  const variant = hasVariants ? getVariant(product, choices) : product.variants[0]
+
+
 
   const addToCart = async () => {
     setLoading(true)
@@ -97,21 +117,101 @@ const ProductView = ({ product }: { product: Product }) => {
         <ContentGrid>
           <ImageGallery product={product} />
           <div className={s.info}>
-            <h1>{product.name}</h1>
-            <h2>{product.description}</h2>
+            {/* <h1>{product.name}</h1> */}
+            <section>
+              {product.options?.map((opt) => (
+                <div className="pb-4" key={opt.displayName}>
+                  <div className={s.headingwrapper}>
+                    <h1 className={s.name}>{product.name}</h1>
+                    {/* TODO: add collection to breadcrumbs */}
+                    <h2 className={s.collectionname}>{`${product.productType}`}</h2>
+                  </div>
+                  <p className={s.productprice}>{price}</p>
+
+                  {// TODO: Update swatches to show item description.
+                    hasVariants ? (
+
+                      <div className={s.swatches}>
+                        {opt.values.map((v, i: number) => {
+                          const active = (choices as any)[
+                            opt.displayName.toLowerCase()
+                          ]
+
+                          return (
+                            <Swatch
+                              key={`${opt.id}-${i}`}
+                              active={v.label.toLowerCase() === active}
+                              variant={opt.displayName}
+                              color={v.hexColors ? v.hexColors[0] : ''}
+                              label={v.label}
+                              onClick={() => {
+                                setChoices((choices) => {
+                                  return {
+                                    ...choices,
+                                    [opt.displayName.toLowerCase()]: v.label.toLowerCase(),
+                                  }
+                                })
+                              }}
+                            />
+                          )
+                        })}
+                      </div>
+                    ) : ''}
+                </div>
+              ))}
+
+              <div>
+                {/* TODO: Fix variant issue */}
+                <Button
+                  aria-label="Add to Cart"
+                  type="button"
+                  className={s.button}
+                  onClick={addToCart}
+                  loading={loading}
+                /* disabled={!variant && product.options.length > 0} */
+                >
+                  Add to Cart
+                </Button>
+              </div>
+
+              <hr className={s.descriptionrule} />
+
+              <div className={s.descriptionWrapper}>
+                {/* TODO: Use descriptionHTML instead */}
+                <Text className={s.description} html={product.description} />
+              </div>
+            </section>
+            {/* TODO: add links for tags */}
+            {/* {
+              
+              product.tags
+                ? product.tags.map((tag) => <button>{tag}</button>)
+                : ''
+            } */}
+
+
+            {/* {process.env.COMMERCE_WISHLIST_ENABLED && (
+              <WishlistButton
+                className={s.wishlistButton}
+                productId={product.id}
+                variant={product.variants[0]! as any}
+              />
+            )} */}
+            {/* <h2>{product.description}</h2>
             <h3>{product.price.value}</h3>
-            <h4>{product.price.currencyCode}</h4>
+            <h4>{product.price.currencyCode}</h4> */}
           </div>
-          <div className={s.details}>
+          {/* <div className={s.details}>
             <h2>Details</h2>
-          </div>
+          </div> */}
         </ContentGrid>
       </ContentSection>
-      <ContentSection el="section">
+      <RelatedProducts products={relatedProducts} />
+      {/* <ContentSection el="section">
         <h1>Related Projects</h1>
         <article>item1</article>
         <article>item2</article>
-      </ContentSection>
+      </ContentSection> */}
     </>
   )
 }

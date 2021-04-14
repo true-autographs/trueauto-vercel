@@ -26,6 +26,7 @@ import Ticker from 'react-ticker'
 
 import ES from './es.module.scss'
 import FP from './fp.module.scss'
+import s from './home.module.scss'
 
 export async function getStaticProps({
   preview,
@@ -125,6 +126,7 @@ export default function Home({
         title={'Signing Events'}
         pageUrl={`products/signingevents`}
         hideInfo={true}
+        buttonText={'View All Signings'}
       />
 
       {/* 
@@ -140,6 +142,7 @@ export default function Home({
         title={'New Products'}
         pageUrl={`products`}
         hideInfo={false}
+        buttonText={'View All Products'}
       />
 
       {/* <section className={FP.wrapper}>

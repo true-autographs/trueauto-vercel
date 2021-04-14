@@ -29,24 +29,22 @@ const AnnouncementBar = ({}) => {
     </button>
   )
 
-  return isOpen ? (
+  return <div className={cn(s.announcementbar, {[s.announcementbar__closed]: !isOpen})}>
     <ContentSection
-      className={s.announcementbar}
+      className={s.contentsection}
       el={'aside'}
       noPadVertical={true}
-    >
+      >
       {targetLink ? (
         <Link href={targetLink}>
           <a>{announcementMessage}</a>
         </Link>
       ) : (
         announcementMessage
-      )}
+        )}
       {closeButton}
     </ContentSection>
-  ) : (
-    ''
-  )
+        </div>
 }
 
 export default AnnouncementBar

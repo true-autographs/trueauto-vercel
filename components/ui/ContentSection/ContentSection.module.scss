@@ -5,6 +5,11 @@
   padding: $l-gutter;
   max-width: $l-max-width;
   margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  row-gap: $l-gutter * 2;
 }
 
 .nopadvertical {

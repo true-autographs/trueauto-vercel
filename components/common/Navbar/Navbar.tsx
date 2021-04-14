@@ -44,11 +44,8 @@ const NavLink = ({ url, title }: { url: string; title: string }) => {
 
 const NavElement = () => {
   return (
-    <ContentSection noPadVertical={true}>
-      <div
-        className="relative flex flex-row justify-between py-4 align-center md:py-6"
-        style={{ paddingTop: '.75rem', paddingBottom: '.75rem' }}
-      >
+    <ContentSection noPadVertical={true} className={s.contentsection}>
+      <div className={s.contents}>
         <div className="flex items-center flex-1">
           <Link href="/">
             <a className={s.logo} aria-label="Logo">
@@ -56,10 +53,10 @@ const NavElement = () => {
             </a>
           </Link>
           <nav className="hidden ml-6 space-x-4 lg:block">
-            <NavLink url={'/products'} title={'products'} />
+            <NavLink url={'/search'} title={'products'} />
             <NavLink url={'/signing events'} title={'signing events'} />
             <NavLink url={'/news'} title={'news'} />
-            <NavLink url={'/search'} title={'search'} />
+            {/* <NavLink url={'/search'} title={'search'} /> */}
           </nav>
         </div>
 
@@ -81,7 +78,7 @@ const NavElement = () => {
 
 const Navbar: FC = () => (
   <NavbarRoot>
-    <AnnouncementBar showInitially={true} />
+    {/* <AnnouncementBar /> */}
     <NavElement />
   </NavbarRoot>
 )

@@ -1,0 +1,69 @@
+@import '@assets/globals.scss';
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    column-gap: $l-gutter;
+
+    @include query-tablet {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    @include query-desktop {
+        grid-template-columns: 1fr 3fr;
+    }
+
+    @include query-desktop-lg {
+        grid-template-columns: 1fr 4fr;
+    }
+}
+
+.resultInfo {
+    display: block;
+    padding-bottom: $l-gutter;
+}
+
+.filters {
+    display: none;
+
+    @include query-tablet {
+        display: block;
+    }
+}
+
+.filterLink {
+
+    cursor: pointer;
+    transition: 0.2s linear;
+
+    &:hover {
+        color: $brandcolor-cyan-100;
+    }
+
+    &__type {
+        &:hover {
+            color: $brandcolor-cyan-60;
+        }
+    }
+}
+
+.filterSectionTitle {
+    @include font-sans-800;
+    padding-top: $l-unit * 2;
+    padding-bottom: $l-unit / 4;
+}
+
+.filterSectionRule {
+    border-top: 2px solid $brandcolor-cyan-100;
+    width: $l-unit * 2;
+    padding-bottom: $l-unit / 2;
+}
+
+.products {
+    width: 100%;
+}
+
+.productgrid {
+    width: 100%;
+}

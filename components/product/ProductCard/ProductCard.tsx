@@ -81,12 +81,11 @@ const ProductCard = (cardProps: CardProps) => {
             <>
               <div
                 className={s.titleblock}
-                style={{ display: 'flex', flexDirection: 'column-reverse' }}
               >
                 <h1 className={s.title}>{cardTitle}</h1>
                 <h2 className={s.type}>{product.productType}</h2>
+                <p className={s.price}>{priceInfo}</p>
               </div>
-              <p className={s.price}>{priceInfo}</p>
             </>
           )}
         </article>

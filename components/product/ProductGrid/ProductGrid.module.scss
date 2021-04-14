@@ -1,17 +1,32 @@
-$layout-unit: 18px;
-
-$grid-gutter: $layout-unit * 2;
+@import '@assets/globals.scss';
 
 .productgrid {
   width: 100%;
   display: flex;
-  margin-left: -$grid-gutter;
+  margin-left: -$l-gutter;
 }
 
 .productgrid__column {
-  padding-left: $grid-gutter;
+  padding-left: $l-gutter;
 
   & > * {
-    margin-bottom: $grid-gutter * 2;
+    margin-bottom: $l-gutter * 2;
   }
+}
+
+.gridwrapper {
+  display: grid;
+  width: 100%;
+  column-gap: $l-gutter;
+  row-gap: $l-gutter;
+  align-items: flex-end;
+
+  grid-template-columns: repeat(1, 1fr);
+
+  
+  @include query-tablet{ grid-template-columns: repeat(2, 1fr)}
+  
+  @include query-desktop{ grid-template-columns: repeat(3, 1fr)}
+  
+  @include query-desktop-lg{ grid-template-columns: repeat(4, 1fr)}
 }

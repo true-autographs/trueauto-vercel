@@ -10,6 +10,8 @@ import { useUI } from '@components/ui/context'
 import DropdownMenu from './DropdownMenu'
 import s from './UserNav.module.css'
 
+import { FiShoppingCart, FiHeart, FiUser } from 'react-icons/fi'
+
 interface Props {
   className?: string
 }
@@ -48,7 +50,8 @@ const UserNav: FC<Props> = ({ className }) => {
                 aria-label="Menu"
                 onClick={() => openModal()}
               >
-                <Avatar />
+                {/* <Avatar /> */}
+                Account
               </button>
             )}
           </li>

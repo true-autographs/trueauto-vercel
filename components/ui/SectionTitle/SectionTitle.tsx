@@ -9,13 +9,7 @@ const SectionTitle = ({ title, sectionLink }: Props) => {
   return (
     <div className={s.titlewrapper}>
       <h1 className={s.title}>{title}</h1>
-      {sectionLink ? (
-        <a className={s.link} href={sectionLink}>
-          View All
-        </a>
-      ) : (
-        ''
-      )}
+      <hr className={s.rule} />
     </div>
   )
 }

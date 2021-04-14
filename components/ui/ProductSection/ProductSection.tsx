@@ -5,7 +5,7 @@ import Link from 'next/Link'
 import { Breakpoints } from '@components/ui'
 import { ProductCard } from '@components/product'
 import type { Product } from '@commerce/types'
-import { ContentSection, SectionTitle } from '@components/ui'
+import { ContentSection, SectionTitle, ButtonRolling } from '@components/ui'
 
 import s from './ProductSection.module.scss'
 
@@ -63,6 +63,7 @@ interface Products {
   hideInfo?: boolean
   pageUrl?: string
   title: string
+  buttonText?: string
 }
 
 const ProductSection = ({
@@ -71,9 +72,10 @@ const ProductSection = ({
   hideInfo = false,
   pageUrl,
   title,
+  buttonText
 }: Products) => {
   return (
-    <ContentSection el={'section'}>
+    <ContentSection el={'section'} className={s.contentsection}>
       <SectionTitle title={title} sectionLink={pageUrl} />
       <div className={alignBottom ? s.productGrid__alignbottom : s.productGrid}>
         {products.map((product, index) => (
@@ -84,6 +86,9 @@ const ProductSection = ({
           />
         ))}
       </div>
+      {buttonText && (
+        <ButtonRolling href={pageUrl} text={buttonText} />
+      )}
     </ContentSection>
   )
 }

@@ -151,6 +151,12 @@
   width: 100%;
   height: auto;
   display: block;
+
+  transition: 0.2s linear;
+
+  &:hover {
+    color: $brandcolor-cyan-100;
+  }
 }
 
 .card {
@@ -163,6 +169,11 @@
 }
 
 .titleblock {
+  padding-top: $l-unit;
+
+  & * + * {
+    padding-top: $l-unit / 4;
+  }
 }
 
 .title {
@@ -170,7 +181,7 @@
 }
 
 .type {
-  @include font-sans-100;
+  @include font-sans-400;
 }
 
 .price {
