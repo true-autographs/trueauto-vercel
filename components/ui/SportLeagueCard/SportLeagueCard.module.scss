@@ -22,8 +22,8 @@
   padding-bottom: 100%;
   overflow: hidden;
   //border-radius: 50%;
-
 }
+
 .imageWrapper img {
   position: absolute;
   top: 0;
@@ -61,15 +61,13 @@
 }
 
 .leaguename {
-
   display: block;
 
   @include typo-size-lg;
   @include typo-allcapped;
+  @include font-sans-800;
   
   text-align: center;
-
-  @include font-sans-800;
 
   color: $brandcolor-black-100;
 
