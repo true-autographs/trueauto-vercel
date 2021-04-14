@@ -54,7 +54,6 @@ const getCollections = async (config: ShopifyConfig): Promise<Object[]> => {
       }
     }`
 
-    console.log(gqlQuery)
     const { data } = await config.fetch(gqlQuery, { variables: {} })
     const mutatedData = data.collections?.edges?.map(({ node: { id, title, handle } }) => {
 

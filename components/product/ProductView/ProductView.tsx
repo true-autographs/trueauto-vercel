@@ -50,10 +50,8 @@ const RelatedProducts = ({ products }: Product[]) => {
 const ProductView = ({ product, relatedProducts }: { product: Product, relatedProducts: Product[] }) => {
   if (!product.price.value) {
     console.log('------------- failed ----------')
-    console.log(product)
+    console.log(product.name)
   }
-
-  console.log(product)
 
   const addItem = useAddItem()
   const { price } = usePrice({

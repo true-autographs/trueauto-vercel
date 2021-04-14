@@ -60,7 +60,6 @@ const ProductCard = (cardProps: CardProps) => {
 
   const cardImageWidth = 320
 
-  console.log(product.path)
   return (
     <Link href={`/product${product.path}`}>
       <a className={s.linkwrapper}>

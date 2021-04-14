@@ -6,7 +6,6 @@ import Prismic from 'prismic-javascript'
 import { Container, Grid, Skeleton } from '@components/ui'
 
 export default function Post({ data }) {
-  console.log(data.body)
   //console.log(data.body[0].primary)
   return (
     <div className="pb20">
