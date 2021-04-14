@@ -57,18 +57,22 @@
   align-items: center;
   justify-content: flex-end;
 
-  background: linear-gradient(to top, rgba(255,255,255,0.8), transparent)
+  //background: linear-gradient(to top, rgba(255,255,255,0.8), transparent)
 }
 
 .leaguename {
 
   display: block;
 
-  @include typo-size-base;
+  @include typo-size-lg;
   @include typo-allcapped;
   
   text-align: center;
-  font-family: 'HK Grotesk';
 
   @include font-sans-800;
+
+  color: $brandcolor-black-100;
+
+  padding: .5em 1.25em;
+  background-color: rgba(255,255,255,0.8);
 }

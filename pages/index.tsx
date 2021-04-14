@@ -6,6 +6,8 @@ import {
   SportLeagueCard,
   Marquee,
   ProductSection,
+  ContentSection,
+  ButtonRolling
 } from '@components/ui'
 import { ProductCard } from '@components/product'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
@@ -108,16 +110,61 @@ const tickerItems = () =>
     />
   ))
 
+
+
 export default function Home({
   products,
   brands,
   categories,
   events,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+
+  const prods = {
+    title: 'products',
+    pageLink: 'search/',
+    imageUrl: 'ta_sample_bw_on_knees.jpg',
+  }
+  const evnts = {
+    title: 'events',
+    pageLink: 'search/',
+    imageUrl:
+      'https://images.unsplash.com/photo-1612151387614-0d29a04ff5f3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80',
+  }
+
   return (
     <>
-      <HomeHero />
-      <Marquee>{tickerItems()}</Marquee>
+      <div className={s.hero}>
+        <ContentSection className={s.container} el="section">
+          <div className={s.herogrid}>
+            <a href={prods.pageLink} className={s.linkWrapper} key={'products'}>
+
+              <div className={s.section}>
+                <img
+                  className={s.backgroundImage}
+                  src={prods.imageUrl}
+                  alt="product intro image"
+                />
+                <h1 className={s.pseudobutton}>{prods.title}</h1>
+              </div>
+
+            </a>
+            <a href={evnts.pageLink} className={s.linkWrapper} key={'events'}>
+
+              <div className={s.section}>
+                <img
+                  className={s.backgroundImage}
+                  src={evnts.imageUrl}
+                  alt="events intro image"
+                />
+
+                <h1 className={s.pseudobutton}>{evnts.title}</h1>
+              </div>
+
+            </a>
+          </div>
+        </ContentSection>
+        <Marquee>{tickerItems()}</Marquee>
+      </div>
 
       <ProductSection
         key={'signings'}
@@ -233,12 +280,42 @@ export default function Home({
           </div>
         </div>
       </section> */}
-
+      {/* 
       <Hero
         headline="A BUNCH of new upcoming signings!"
         description="
         John Taylor will be in the house here in Stockton to complete a private signing with over 75 mail in orders! Looking forward to sharing these moments with you after the weekend!"
-      />
+      /> */}
+
+      <ContentSection>
+        <div className={s.blogLayout}>
+          <div className={s.blogLeft}>
+            <h1>Latest News</h1>
+            <p>Learn about what what we're doing, with who, and what's to come.</p>
+            <a href="/" className={s.blogButton}>See Latest News</a>
+          </div>
+          <div className={s.blogGrid}>
+            <div className={s.blogPost}>
+              <span>SEPT 24, 2020</span>
+              <h1>A BUNCH of new upcoming signings!</h1>
+              <hr />
+              <p>John Taylor will be in the house here in Stockton to complete a private signing with over 75 mail in orders! Looking forward to sharing these moments with you after the weekend!</p>
+            </div>
+            <div className={s.blogPost}>
+              <span>SEPT 24, 2020</span>
+              <h1>A BUNCH of new upcoming signings!</h1>
+              <hr />
+              <p>John Taylor will be in the house here in Stockton to complete a private signing with over 75 mail in orders! Looking forward to sharing these moments with you after the weekend!</p>
+            </div>
+            <div className={s.blogPost}>
+              <span>SEPT 24, 2020</span>
+              <h1>A BUNCH of new upcoming signings!</h1>
+              <hr />
+              <p>John Taylor will be in the house here in Stockton to complete a private signing with over 75 mail in orders! Looking forward to sharing these moments with you after the weekend!</p>
+            </div>
+          </div>
+        </div>
+      </ContentSection>
 
       {/* <Grid layout="B">
         {products.slice(0, 3).map((product, i) => (

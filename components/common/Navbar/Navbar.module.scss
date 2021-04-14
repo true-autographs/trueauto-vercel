@@ -26,9 +26,14 @@
 }
 
 .navlink {
+  @include typo-size-base;
+  @include font-sans-800;
+
   color: inherit;
   &active {
-    text-decoration: underline;
+    //text-decoration: underline;
+    @include font-sans-800-italic;
+    color: $brandcolor-cyan-100;
   }
 }
 

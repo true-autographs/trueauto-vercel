@@ -54,8 +54,8 @@ const NavElement = () => {
           </Link>
           <nav className="hidden ml-6 space-x-4 lg:block">
             <NavLink url={'/search'} title={'products'} />
-            <NavLink url={'/signing events'} title={'signing events'} />
-            <NavLink url={'/news'} title={'news'} />
+            <NavLink url={'/'} title={'signing events'} />
+            <NavLink url={'/'} title={'news'} />
             {/* <NavLink url={'/search'} title={'search'} /> */}
           </nav>
         </div>
