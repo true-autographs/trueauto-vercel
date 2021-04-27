@@ -1,0 +1,247 @@
+@import '@assets/globals.scss';
+
+.ctabutton {
+    @include typo-size-lg;
+    color: $brandcolor-black-80;
+
+    &:hover {
+        color: $brandcolor-cyan-100
+    }
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: calc(100vh - 88px);
+    background-color: transparent;
+}
+
+.sectiongrid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  
+    column-gap: $l-gutter;
+    row-gap: $l-gutter;
+
+    z-index: 1;
+  }
+
+.sectiontext {
+    width: 100%;
+    height: 100% !important;
+    z-index: 1;
+    grid-column: 1 / -1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+
+    & h1 {
+        @include typo-size-jumbo;
+        @include font-sans-800;
+        line-height: 1.2;
+    }
+
+    & h2 {
+        @include typo-size-lg;
+        
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+
+    & h3 {
+        @include typo-size-lg;
+
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+}
+
+.ctabutton {
+    margin: auto;
+    display: inline;
+}
+
+.imagewrapper {
+    position: relative;
+    height: 100%;
+}
+
+.heroimage {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* 
+ServiceCard
+*/
+
+.servicecards {
+    grid-column: 1/-1;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  
+    column-gap: $l-gutter;
+    row-gap: $l-gutter;
+
+    z-index: 1;
+
+    @include query-tablet {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @include query-desktop {
+    }
+
+    @include query-desktop-lg {
+        grid: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.servicecard {
+    border-radius: $l-unit / 2;
+    overflow: hidden;
+
+    @include BoxShadowBlue(4);
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.servicecardimagewrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 60%;
+}
+
+.servicecardimage {
+    width: 100%;
+    height: 100%;
+}
+
+.servicecardtextwrapper {
+    width: 100%;
+    padding: $l-unit;
+
+    & h1 {
+        @include typo-size-xl;
+        @include font-sans-800;
+    }
+
+    & p {
+        @include typo-size-base;
+        color: $brandcolor-black-80;
+    }
+}
+
+.blogLayout {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+
+    @include query-tablet {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @include query-desktop {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    @include query-desktop-lg {
+        grid-template-columns: 1fr 3fr;
+    }
+
+    column-gap: $l-gutter;
+    row-gap: $l-gutter * 2;
+
+    margin-top: $l-gutter * 2;
+    margin-bottom: $l-gutter * 2;
+
+    padding: $l-gutter;
+
+    border: 4px solid $brandcolor-cyan-100;
+}
+
+.blogGrid {
+    display: grid;
+    width: 100%;
+
+    grid-template-columns: 1fr;
+
+    @include query-tablet {
+        grid-template-columns: 1fr;
+    }
+
+    @include query-desktop {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @include query-desktop-lg {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    column-gap: $l-gutter;
+
+    row-gap: $l-gutter * 2;
+}
+
+.blogLeft {
+    & h1 {
+        @include typo-size-xxxl;
+        @include font-sans-800;
+        line-height: 1;
+        padding-bottom: $l-unit;
+    }
+
+    & p {
+        @include typo-size-lg;
+        @include font-sans-500;
+        padding-bottom: $l-gutter * 2;
+    }
+}
+
+.blogPost {
+    & img {
+        width: 100%;
+    }
+
+    & span {
+        display: block;
+        @include typo-size-base;
+        @include font-sans-600;
+        line-height: 1;
+        margin-bottom: $l-unit;
+
+    }
+
+    & h1 {
+        @include typo-size-xl;
+        @include font-sans-600;
+        margin-bottom: $l-unit;
+    }
+
+    & p {
+        @include typo-size-lg;
+        @include font-sans-400;
+        color: $brandcolor-black-80;
+    }
+
+    & hr {
+        border: 2px solid $brandcolor-cyan-100;
+        width: 100%;
+        max-width: $l-gutter * 2;
+        margin-bottom: $l-unit / 2;
+    }
+}

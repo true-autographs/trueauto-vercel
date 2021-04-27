@@ -1,0 +1,80 @@
+@import '@assets/globals.scss';
+
+.container {
+    width: 100%;
+    background-color: $brandcolor-black-80;
+}
+
+
+.sectiongrid {
+    width: 100%;
+    max-width: 80ch;
+    margin: auto;
+
+    & > * {
+        padding-top: 2rem;
+    }
+}
+
+.sectiontext {
+    width: 100%;
+    height: 100% !important;
+    z-index: 1;
+    grid-column: 1 / -1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+
+    & h1 {
+        @include typo-size-jumbo;
+        @include font-sans-800;
+        line-height: 1.2;
+        color: white;
+    }
+
+    & h2 {
+        @include typo-size-lg;
+        
+        margin-top: 2em;
+        margin-bottom: 2em;
+        color: white;
+    }
+
+    & h3 {
+        @include typo-size-lg;
+
+        margin-top: 2em;
+        margin-bottom: 2em;
+        color: white;
+    }
+}
+
+.imagefigure {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+
+    & .image {
+        width: 100%;
+        height: 100%;
+    }
+
+    & figcaption {
+        @include typo-size-sm;
+    }
+}
+
+.sectionbody {
+    width: 100%;
+
+    & * + * {
+        padding-top: 1em;
+    }
+}
+
+.signature {
+    margin-top: 2rem;
+}

@@ -33,30 +33,58 @@ const Footer: FC<Props> = ({ className, pages }) => {
               <div className={m.footerLinksWrapper}>
                 <ul>
                   <h1>Pages</h1>
-                  <li><Link href={"/search"}><a>All Products</a></Link></li>
-                  <li><Link href={"/"}><a>Signing Events</a></Link></li>
-                  <li><Link href={"/"}><a>News</a></Link></li>
+                  <li>
+                    <Link href={'/search'}>
+                      <a>All Products</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={'/'}>
+                      <a>Signing Events</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={'/'}>
+                      <a>News</a>
+                    </Link>
+                  </li>
                 </ul>
                 <ul>
                   <h1>Resources</h1>
-                  <li><Link href={"/"}><a>Lookup Authenticity Code</a></Link></li>
-                  <li><Link href={"/"}><a>B2B</a></Link></li>
-                  <li><Link href={"/"}><a>Agents</a></Link></li>
+                  <li>
+                    <Link href={'/'}>
+                      <a>Lookup Authenticity Code</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={'/b2b'}>
+                      <a>B2B</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={'/agent'}>
+                      <a>Agents</a>
+                    </Link>
+                  </li>
                 </ul>
                 <ul>
                   <h1>Legal</h1>
-                  <li><Link href={"/search"}><a>Terms of Service</a></Link></li>
-                  <li><Link href={"/"}><a>Privacy Policy</a></Link></li>
+                  <li>
+                    <Link href={'/search'}>
+                      <a>Terms of Service</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={'/'}>
+                      <a>Privacy Policy</a>
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
         </ContentSection>
       </footer>
-
-
-
-
 
       {/* <footer className={rootClassName}>
         <Container>
