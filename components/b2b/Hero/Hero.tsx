@@ -16,11 +16,9 @@ const Hero: React.FC<HeroProps> = ({}) => {
             Through our connections, integrity, and care, we can provide a
             consistent flow of memorabilia to you at a wholesale price.
           </h2>
-          <ButtonRolling
-            className={s.ctabutton}
-            text={'Contact Us'}
-            href="#contactform"
-          />
+          <a className={s.ctabutton} href="#contactform">
+            Contact Us
+          </a>
         </div>
         <div className={s.imagewrapper}>
           <Image

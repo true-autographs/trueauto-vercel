@@ -3,7 +3,6 @@
 // https://medium.com/@gtalarico/using-airtable-as-a-content-backend-e373cd0d9974
 // https://lihbr.com/blog/rate-limiting-without-overhead-netlify-or-vercel-functions
 
-
 //import Status from 'http-status-codes'
 const Airtable = require('airtable')
 
@@ -12,46 +11,24 @@ const { AIRTABLE_BASE_ID } = process.env
 const { AIRTABLE_TABLE_NAME } = process.env
 
 const at_base = new Airtable({
-    apiKey: AIRTABLE_API_KEY
-})
-    .base(AIRTABLE_BASE_ID)
+  apiKey: AIRTABLE_API_KEY,
+}).base(AIRTABLE_BASE_ID)
 
 const table = at_base()
 
 export default (request, response) => {
-    const { query: { name } } = request
+  const {
+    query: { name },
+  } = request
 
-    const requestQuery = name
+  const requestQuery = name
 
-    const searchFieldName = 'certification_number'
+  const searchFieldName = 'certification_number'
 
-    const searchFilter = `filterByFormula={${searchFieldName}}="${requestQuery}"`
-
-
-
-
-
+  const searchFilter = `filterByFormula={${searchFieldName}}="${requestQuery}"`
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //export default (request, response) => response.send('hello world');
-
 
 /* export default (request, response) => {
     if (request.method !== 'GET') {
