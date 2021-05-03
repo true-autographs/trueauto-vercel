@@ -110,9 +110,21 @@ $all-caps-text-spacing: 0.1em;
   color: $brandcolor-black-80;
 }
 
+@mixin typo-section-heading {
+  @include font-sans-800;
+  @include typo-size-xl;
+  color: $brandcolor-black-80;
+}
+
 @mixin typo-button {
   @include font-sans-800;
   @include typo-size-base;
   color: $brandcolor-black-100;
   @include typo-allcapped;
+}
+
+@mixin typo-caption {
+  @include font-sans-400;
+  @include typo-size-sm;
+  color: $brandcolor-black-80;
 }

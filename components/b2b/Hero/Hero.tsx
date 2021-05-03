@@ -3,31 +3,38 @@ import { ContentSection, ButtonRolling } from '@components/ui'
 import s from './Home.module.scss'
 import cn from 'classnames'
 import Image from 'next/image'
+import { urlFor } from 'lib/sanity/urlFor'
 
-interface HeroProps {}
+const Hero = ({ content, audience }) => {
+  const { headline, subHeadline, ctaButtonText, heroImage } = content
 
-const Hero: React.FC<HeroProps> = ({}) => {
+  const imageUrl = heroImage && urlFor(heroImage.asset)
+  console.log(urlFor(heroImage.asset))
+
   return (
     <ContentSection className={s.container} el="section">
       <div className={s.herogrid}>
         <div className={s.herotext}>
-          <h1>We can provide the best memorabilia in the business</h1>
-          <h2>
-            Through our connections, integrity, and care, we can provide a
-            consistent flow of memorabilia to you at a wholesale price.
-          </h2>
-          <a className={s.ctabutton} href="#contactform">
-            Contact Us
-          </a>
+          {headline && <h1>{headline}</h1>}
+
+          {subHeadline && <h2>{subHeadline}</h2>}
+
+          {ctaButtonText && (
+            <a className={s.ctabutton} href="#contactform">
+              {ctaButtonText}
+            </a>
+          )}
         </div>
         <div className={s.imagewrapper}>
-          <Image
-            className={s.heroimage}
-            src="/temp-walloffootballs.jpg"
-            alt="collage of signing events"
-            layout="fill"
-            objectFit="cover"
-          />
+          {imageUrl && (
+            <Image
+              className={s.heroimage}
+              src={imageUrl}
+              alt={heroImage.alt}
+              layout="fill"
+              objectFit="cover"
+            />
+          )}
         </div>
       </div>
     </ContentSection>

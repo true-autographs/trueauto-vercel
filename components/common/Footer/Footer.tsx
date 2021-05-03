@@ -52,7 +52,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 <ul>
                   <h1>Resources</h1>
                   <li>
-                    <Link href={'/'}>
+                    <Link href={'/authenticitySearch'}>
                       <a>Lookup Authenticity Code</a>
                     </Link>
                   </li>

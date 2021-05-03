@@ -1,0 +1,34 @@
+@import '@assets/globals.scss';
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: calc(100vh - 88px);
+    background-color: transparent;
+}
+
+.content {
+    margin: auto;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchCard {
+    padding: $l-gutter;
+    border: 4px solid $brandcolor-cyan-100;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: $l-gutter;
+    @include BoxShadowBlue(12);
+
+    & > * {
+        max-width: 70ch;
+        text-align: center;
+    }
+}

@@ -13,7 +13,10 @@ module.exports = withCommerceConfig({
   },
   typescript: {
     // !!WARN turn off ASAP //
-    ignoreBuildErrors: true
+    ignoreBuildErrors: true,
+  },
+  images: {
+    domains: ['cdn.sanity.io'],
   },
   rewrites() {
     return [
@@ -43,8 +46,8 @@ module.exports = withCommerceConfig({
       },
       {
         source: '/search/:category/:producttype',
-        destination: '/search'
-      }
+        destination: '/search',
+      },
     ].filter((x) => x)
   },
 })
